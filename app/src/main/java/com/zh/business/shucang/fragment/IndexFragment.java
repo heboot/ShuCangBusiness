@@ -7,18 +7,13 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.qmuiteam.qmui.util.QMUIDisplayHelper;
-import com.waw.hr.mutils.LogUtil;
-import com.zh.business.shucang.MAPP;
 import com.zh.business.shucang.R;
 import com.zh.business.shucang.adapter.index.IndexGoodsAdapter;
 import com.zh.business.shucang.base.BaseFragment;
 import com.zh.business.shucang.databinding.ActivityIndexBinding;
-import com.zh.business.shucang.view.IndexGridItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class IndexFragment extends BaseFragment<ActivityIndexBinding> {
 

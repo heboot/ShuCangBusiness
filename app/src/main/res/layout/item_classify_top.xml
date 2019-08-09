@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:background="@color/qmui_config_color_red"
+        android:layout_marginLeft="@dimen/x10"
+        android:id="@+id/iv_img"
+        android:layout_width="@dimen/x52"
+        android:layout_height="@dimen/y45"
+        android:orientation="vertical"></ImageView>
+</layout>

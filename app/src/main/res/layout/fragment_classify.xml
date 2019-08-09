@@ -1,6 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff5f5f5"
+        android:orientation="vertical">
+
+
+        <View
+            android:id="@+id/v_top"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y65"
+            android:background="#232324"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></View>
+
+        <EditText
+            android:id="@+id/et_key"
+            android:layout_width="@dimen/x265"
+            android:layout_height="@dimen/y28"
+            android:layout_marginBottom="@dimen/y8"
+            android:background="@drawable/bg_d3d3d3_25"
+            android:gravity="left|center_vertical"
+            android:hint="查找商品"
+            android:paddingLeft="@dimen/x25"
+            android:paddingRight="@dimen/x10"
+            android:textColorHint="#A3A2A2"
+            android:textSize="@dimen/x13"
+            app:layout_constraintBottom_toBottomOf="@+id/v_top"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <ImageView
+            android:layout_width="@dimen/x14"
+            android:layout_height="@dimen/y14"
+            android:layout_marginLeft="@dimen/x8"
+            android:background="@mipmap/icon_search"
+            app:layout_constraintBottom_toBottomOf="@+id/et_key"
+            app:layout_constraintLeft_toLeftOf="@+id/et_key"
+            app:layout_constraintTop_toTopOf="@+id/et_key" />
+
+        <View
+            android:id="@+id/v1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y1"
+            android:layout_marginTop="@dimen/y10"
+            android:background="#e0dede"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_top"></View>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list_left"
+            android:layout_width="@dimen/x80"
+            android:layout_height="0dp"
+            android:background="#fff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v1"></androidx.recyclerview.widget.RecyclerView>
+
+        <View
+            android:id="@+id/v2"
+            android:layout_width="@dimen/x1"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/y10"
+            android:background="#e0dede"
+            app:layout_constraintLeft_toRightOf="@+id/rv_list_left"
+            app:layout_constraintTop_toBottomOf="@+id/v_top"></View>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:paddingLeft="@dimen/x10"
+            android:paddingRight="@dimen/x10"
+            android:id="@+id/rv_list_right"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#fff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/v2"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v1"></androidx.recyclerview.widget.RecyclerView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

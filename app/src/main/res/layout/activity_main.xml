@@ -43,6 +43,7 @@
             app:layout_constraintRight_toRightOf="parent">
 
             <LinearLayout
+                android:id="@+id/llyt_index"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -53,14 +54,39 @@
                     android:layout_width="@dimen/x17"
                     android:layout_height="@dimen/y17"
                     android:layout_marginTop="@dimen/y10"
-                    android:background="@color/qmui_config_color_red" />
+                    android:background="@mipmap/icon_index_normal"
+                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/y6"
                     android:text="首页"
-                    android:textColor="#D71B43"
+                    android:textColor="#A9A9A9"
+                    android:textSize="@dimen/x9" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llyt_classify"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/x17"
+                    android:layout_height="@dimen/y17"
+                    android:layout_marginTop="@dimen/y10"
+                    android:background="@mipmap/icon_classify_fouse" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y6"
+                    android:text="分类"
+                    android:textColor="#A9A9A9"
                     android:textSize="@dimen/x9" />
 
             </LinearLayout>
@@ -76,14 +102,14 @@
                     android:layout_width="@dimen/x17"
                     android:layout_height="@dimen/y17"
                     android:layout_marginTop="@dimen/y10"
-                    android:background="@color/qmui_config_color_red" />
+                    android:background="@mipmap/icon_shopcart_normal" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/y6"
-                    android:text="首页"
-                    android:textColor="#D71B43"
+                    android:text="购物车"
+                    android:textColor="#A9A9A9"
                     android:textSize="@dimen/x9" />
 
             </LinearLayout>
@@ -99,37 +125,14 @@
                     android:layout_width="@dimen/x17"
                     android:layout_height="@dimen/y17"
                     android:layout_marginTop="@dimen/y10"
-                    android:background="@color/qmui_config_color_red" />
+                    android:background="@mipmap/icon_my_normal"  />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/y6"
-                    android:text="首页"
-                    android:textColor="#D71B43"
-                    android:textSize="@dimen/x9" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="@dimen/x17"
-                    android:layout_height="@dimen/y17"
-                    android:layout_marginTop="@dimen/y10"
-                    android:background="@color/qmui_config_color_red" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/y6"
-                    android:text="首页"
-                    android:textColor="#D71B43"
+                    android:text="会员中心"
+                    android:textColor="#A9A9A9"
                     android:textSize="@dimen/x9" />
 
             </LinearLayout>

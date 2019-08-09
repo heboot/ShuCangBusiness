@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clyt_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingBottom="@dimen/y10">
+
+        <View
+            android:id="@+id/v1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y26"
+            android:layout_marginTop="@dimen/y115"
+            android:background="@drawable/bg_e4e4e7_border"
+            app:layout_constraintLeft_toLeftOf="@+id/iv_img"
+            app:layout_constraintRight_toRightOf="@+id/iv_img"
+            app:layout_constraintTop_toTopOf="@+id/iv_img"></View>
+
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="@dimen/x126"
+            android:layout_height="@dimen/y116"
+            android:background="@color/qmui_config_color_red"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x7"
+            android:text="1111"
+            android:textColor="#FD4479"
+            android:textSize="@dimen/x15"
+            app:layout_constraintBottom_toBottomOf="@+id/v1"
+            app:layout_constraintLeft_toLeftOf="@+id/v1"
+            app:layout_constraintTop_toTopOf="@+id/v1" />
+
+        <TextView
+            android:text="库存啊啊啊"
+            android:id="@+id/tv_inventory"
+            android:layout_marginRight="@dimen/x5"
+            app:layout_constraintRight_toLeftOf="@+id/v_add"
+            app:layout_constraintTop_toTopOf="@+id/tv_price"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_price"
+            android:textColor="#B8B7B7"
+            android:textSize="@dimen/x10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:id="@+id/v_add"
+            android:layout_width="@dimen/x14"
+            android:layout_height="@dimen/y14"
+            android:layout_marginRight="@dimen/x7"
+            android:background="@mipmap/icon_add"
+            app:layout_constraintBottom_toBottomOf="@+id/v1"
+            app:layout_constraintRight_toRightOf="@+id/v1"
+            app:layout_constraintTop_toTopOf="@+id/v1"></View>
+
+        <TextView
+            android:id="@+id/tv_ziying"
+            android:layout_width="@dimen/x25"
+            android:layout_height="@dimen/y16"
+            android:layout_marginTop="@dimen/y5"
+            android:background="@drawable/bg_d71b43_5"
+            android:gravity="center"
+            android:text="自营"
+            android:textColor="#fff"
+            android:textSize="@dimen/x10"
+            app:layout_constraintLeft_toLeftOf="@+id/v1"
+            app:layout_constraintTop_toBottomOf="@+id/v1" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x5"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="瓷砖地砖客厅卫生间真石全抛半"
+            android:textColor="#212121"
+            android:textSize="@dimen/x12"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_ziying"
+            app:layout_constraintLeft_toRightOf="@+id/tv_ziying"
+            app:layout_constraintRight_toRightOf="@+id/v1"
+            app:layout_constraintTop_toTopOf="@+id/tv_ziying" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
