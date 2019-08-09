@@ -7,7 +7,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentActivity;
 
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
+import com.waw.hr.mutils.MStatusBarUtils;
 import com.waw.hr.mutils.rxbus.RxBus;
 
 import java.util.HashMap;
@@ -52,6 +54,8 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends FragmentAc
         super.onCreate(savedInstanceState);
         mDelegate.onCreate(savedInstanceState);
         params = new HashMap<>();
+        QMUIStatusBarHelper.translucent(this);
+        MStatusBarUtils.setActivityLightMode(this);
         initContentView();
         initUI();
         initData();

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y96"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/iv1"
+            android:layout_width="@dimen/x148"
+            android:layout_height="@dimen/y96" />
+
+        <View
+            android:layout_width="@dimen/x1"
+            android:layout_height="match_parent"
+            android:background="#ffe4e4e7"></View>
+
+
+        <ImageView
+            android:id="@+id/iv2"
+            android:layout_width="@dimen/x75"
+            android:layout_height="@dimen/y96"
+            android:background="@color/qmui_config_color_red"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="@dimen/x1"
+            android:layout_height="match_parent"
+            android:background="#ffe4e4e7"></View>
+
+        <ImageView
+            android:id="@+id/iv3"
+            android:layout_width="@dimen/x75"
+            android:layout_height="@dimen/y96"
+            android:background="@color/qmui_config_color_gray_1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="@dimen/x1"
+            android:layout_height="match_parent"
+            android:background="#ffe4e4e7"></View>
+
+        <ImageView
+            android:id="@+id/iv4"
+            android:layout_width="@dimen/x75"
+            android:layout_height="@dimen/y96"
+            android:background="@color/btn_filled_blue_bg_disabled"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </LinearLayout>
+</layout>
