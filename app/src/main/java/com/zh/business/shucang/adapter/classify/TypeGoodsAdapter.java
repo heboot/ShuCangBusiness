@@ -10,6 +10,7 @@ import com.zh.business.shucang.R;
 import com.zh.business.shucang.adapter.index.IndexGoodsAdapter;
 import com.zh.business.shucang.databinding.ItemClassifyTypeBinding;
 import com.zh.business.shucang.databinding.ItemMainHotBinding;
+import com.zh.business.shucang.utils.IntentUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,9 @@ public class TypeGoodsAdapter  extends BaseQuickAdapter<String, BaseViewHolder> 
         datas.add("1");
         datas.add("1");
         datas.add("1");
+        binding.tvMore.setOnClickListener((v)->{
+            IntentUtils.toGoodsListActivity();
+        });
         TypeGoodsChildAdapter typeGoodsChildAdapter = new TypeGoodsChildAdapter(R.layout.item_classify_goods,datas);
         binding.rvList.setAdapter(typeGoodsChildAdapter);
 

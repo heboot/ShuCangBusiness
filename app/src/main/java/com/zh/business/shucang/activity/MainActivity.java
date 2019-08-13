@@ -5,6 +5,8 @@ import com.zh.business.shucang.base.BaseActivity;
 import com.zh.business.shucang.databinding.ActivityMainBinding;
 import com.zh.business.shucang.fragment.ClassifyFragment;
 import com.zh.business.shucang.fragment.IndexFragment;
+import com.zh.business.shucang.fragment.MyFragment;
+import com.zh.business.shucang.fragment.ShopCartFragment;
 
 import me.yokeyword.fragmentation.ISupportFragment;
 
@@ -13,6 +15,10 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     private IndexFragment indexFragment = IndexFragment.newInstance();
 
     private ClassifyFragment classifyFragment = ClassifyFragment.newInstance();
+
+    private ShopCartFragment shopCartFragment = ShopCartFragment.newInstance();
+
+    private MyFragment myFragment = MyFragment.newInstance();
 
     private ISupportFragment currentFragment;
 
@@ -23,7 +29,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     public void initUI() {
-        mDelegate.loadMultipleRootFragment(binding.flytContainer.getId(), 0, indexFragment, classifyFragment);
+        mDelegate.loadMultipleRootFragment(binding.flytContainer.getId(), 0, indexFragment, classifyFragment,shopCartFragment,myFragment);
     }
 
     @Override
@@ -40,6 +46,14 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         binding.llytClassify.setOnClickListener((v) -> {
             mDelegate.showHideFragment(classifyFragment, currentFragment);
             currentFragment = classifyFragment;
+        });
+        binding.llytShopcart.setOnClickListener((v) -> {
+            mDelegate.showHideFragment(shopCartFragment, currentFragment);
+            currentFragment = shopCartFragment;
+        });
+        binding.llytMy.setOnClickListener((v) -> {
+            mDelegate.showHideFragment(myFragment, currentFragment);
+            currentFragment = myFragment;
         });
     }
 }

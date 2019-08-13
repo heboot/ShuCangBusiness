@@ -25,6 +25,10 @@
 
         <activity android:name=".activity.index.IndexActivity"></activity>
 
+        <activity android:name=".activity.goods.GoodsListActivity"></activity>
+
+        <activity android:name=".activity.user.InfoActivity"></activity>
+
     </application>
 
 </manifest>
