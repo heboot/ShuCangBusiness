@@ -1,6 +1,64 @@
 package com.zh.business.shucang.activity.user;
 
-import com.zh.business.shucang.base.BaseActivity;
+import android.view.View;
 
-public class AddressListActivity extends BaseActivity {
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.zh.business.shucang.R;
+import com.zh.business.shucang.adapter.shopcart.ShopCartAdapter;
+import com.zh.business.shucang.adapter.user.AddressAdapter;
+import com.zh.business.shucang.base.BaseActivity;
+import com.zh.business.shucang.databinding.ActivityAddressListBinding;
+import com.zh.business.shucang.utils.IntentUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class AddressListActivity extends BaseActivity<ActivityAddressListBinding> {
+
+    private AddressAdapter addressAdapter;
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_address_list;
+    }
+
+    @Override
+    public void initUI() {
+        binding.includeToolbar.tvTitle.setText("收货地址");
+        setBackVisibility(View.VISIBLE);
+        binding.rvList.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL,false));
+    }
+
+    @Override
+    public void initData() {
+        List<String> datas = new ArrayList();
+        datas.add("1");
+        datas.add("1");
+        datas.add("1");
+        datas.add("1");
+        datas.add("1");
+        datas.add("1");
+        datas.add("1");
+        datas.add("1");
+        datas.add("1");
+        datas.add("1");
+        datas.add("1");
+        datas.add("1");
+        datas.add("1");
+        datas.add("1");
+        datas.add("1");
+//        int imgWidth = (QMUIDisplayHelper.getScreenWidth(MAPP.mapp)  - MAPP.mapp.getResources().getDimensionPixelSize(R.dimen.x45))/2;
+//        LogUtil.e(TAG, imgWidth + "");
+        addressAdapter = new AddressAdapter( datas);
+        binding.rvList.setAdapter(addressAdapter);
+    }
+
+    @Override
+    public void initListener() {
+        binding.tvSave.setOnClickListener((v)->{
+            IntentUtils.doIntent( AddAddressActivity.class);
+        });
+    }
 }

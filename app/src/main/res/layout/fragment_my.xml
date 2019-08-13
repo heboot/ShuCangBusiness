@@ -120,7 +120,6 @@
             layout="@layout/layout_icon_text_right"
             android:layout_width="0dp"
             android:layout_height="@dimen/y45"
-            android:layout_marginTop="@dimen/y15"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v2"></include>
@@ -141,7 +140,6 @@
             layout="@layout/layout_icon_text_right"
             android:layout_width="0dp"
             android:layout_height="@dimen/y45"
-            android:layout_marginTop="@dimen/y15"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v3"></include>
@@ -161,7 +159,6 @@
             layout="@layout/layout_icon_text_right"
             android:layout_width="0dp"
             android:layout_height="@dimen/y45"
-            android:layout_marginTop="@dimen/y15"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v4"></include>
@@ -181,7 +178,6 @@
             layout="@layout/layout_icon_text_right"
             android:layout_width="0dp"
             android:layout_height="@dimen/y45"
-            android:layout_marginTop="@dimen/y15"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v5"></include>

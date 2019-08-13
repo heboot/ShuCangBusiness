@@ -29,6 +29,14 @@
 
         <activity android:name=".activity.user.InfoActivity"></activity>
 
+        <activity android:name=".activity.user.AddAddressActivity"></activity>
+
+        <activity android:name=".activity.user.AddressListActivity"></activity>
+
+        <activity android:name=".activity.user.FavActivity"></activity>
+
+        <activity android:name=".activity.user.HTMLActivity"></activity>
+
     </application>
 
 </manifest>

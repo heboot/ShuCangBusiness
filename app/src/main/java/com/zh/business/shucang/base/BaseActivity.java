@@ -1,5 +1,6 @@
 package com.zh.business.shucang.base;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
@@ -11,6 +12,7 @@ import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 import com.waw.hr.mutils.MStatusBarUtils;
 import com.waw.hr.mutils.rxbus.RxBus;
+import com.zh.business.shucang.R;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,6 +50,8 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends FragmentAc
 
     protected QMUITipDialog loadingDialog;
 
+    protected View vBack;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,7 +69,22 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends FragmentAc
 
     protected void initContentView() {
         binding = DataBindingUtil.setContentView(this, getLayoutId());
+        vBack = findViewById(R.id.v_back);
+        if(vBack != null){
+            vBack.setOnClickListener((v)->{
+                if(vBack.getVisibility() == View.VISIBLE){
+                    finish();
+                }
+            });
+        }
     }
+
+    protected void setBackVisibility(int v){
+        if(vBack != null){
+            vBack.setVisibility(v);
+        }
+    }
+
 
     @LayoutRes
     protected abstract int getLayoutId();

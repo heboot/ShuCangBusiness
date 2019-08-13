@@ -24,9 +24,12 @@
                 app:layout_constraintTop_toTopOf="parent"></View>
 
             <View
+                android:visibility="gone"
+                android:layout_marginLeft="@dimen/x12"
+                android:background="@drawable/ic_arrow_back_black_24dp"
                 android:id="@+id/v_back"
-                android:layout_width="@dimen/x30"
-                android:layout_height="@dimen/y30"
+                android:layout_width="@dimen/x25"
+                android:layout_height="@dimen/y25"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"></View>
