@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff">
+
+        <include
+            android:id="@+id/include_toolbar"
+            layout="@layout/layout_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y60"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></include>
+
+        <View
+            android:id="@+id/v1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y10"
+            android:background="#F7F7F9"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include_toolbar"></View>
+
+        <View
+            android:id="@+id/v_line"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y1"
+            android:background="#e0dede"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v1"></View>
+
+
+        <ImageView
+            android:id="@+id/iv_mobile"
+            android:layout_width="@dimen/x12"
+            android:layout_height="@dimen/y18"
+            android:layout_marginLeft="@dimen/x17"
+            android:layout_marginTop="@dimen/y18"
+            android:background="@mipmap/icon_mobile"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_line" />
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x13"
+            android:background="@null"
+            android:inputType="number"
+            android:text="111"
+            android:textColor="#6B6B6B"
+            android:textSize="@dimen/x15"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_mobile"
+            app:layout_constraintLeft_toRightOf="@+id/iv_mobile"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_mobile" />
+
+        <View
+            android:id="@+id/v_line2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y1"
+            android:layout_marginLeft="@dimen/x40"
+            android:layout_marginTop="@dimen/y15"
+            android:background="#e0dede"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_phone"></View>
+
+        <ImageView
+            android:id="@+id/iv_pwd"
+            android:layout_width="@dimen/x15"
+            android:layout_height="@dimen/y17"
+            android:layout_marginLeft="@dimen/x17"
+            android:layout_marginTop="@dimen/y18"
+            android:background="@mipmap/icon_pwd"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_line2" />
+
+        <EditText
+            android:id="@+id/et_pwd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x13"
+            android:layout_marginRight="@dimen/x10"
+            android:background="@null"
+            android:inputType="textPassword"
+            android:text="111"
+            android:textColor="#6B6B6B"
+            android:textSize="@dimen/x15"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_pwd"
+            app:layout_constraintLeft_toRightOf="@+id/iv_pwd"
+            app:layout_constraintRight_toLeftOf="@+id/switch_showpwd"
+            app:layout_constraintTop_toTopOf="@+id/iv_pwd" />
+
+        <View
+            android:id="@+id/v_line3"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y1"
+            android:layout_marginTop="@dimen/y15"
+            android:background="#e0dede"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_pwd"></View>
+
+        <Switch
+            android:id="@+id/switch_showpwd"
+            android:layout_width="@dimen/x28"
+            android:layout_height="@dimen/y16"
+            android:layout_marginRight="@dimen/x16"
+            app:layout_constraintBottom_toTopOf="@+id/v_line3"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_line2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x27"
+            android:layout_marginTop="@dimen/y15"
+            android:text="立即注册"
+            android:textColor="#4F4F4F"
+            android:textSize="@dimen/x13"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_line3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y15"
+            android:layout_marginRight="@dimen/x27"
+            android:text="找回密码"
+            android:textColor="#4F4F4F"
+            android:textSize="@dimen/x13"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_line3" />
+
+        <TextView
+            android:layout_width="@dimen/x250"
+            android:layout_height="@dimen/y30"
+            android:layout_marginTop="@dimen/y83"
+            android:background="@drawable/bg_d71b43_5"
+            android:gravity="center"
+            android:text="登录"
+            android:textColor="#fff"
+            android:textSize="@dimen/x12"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_line3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
