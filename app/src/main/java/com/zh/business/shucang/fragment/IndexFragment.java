@@ -5,12 +5,16 @@ import android.view.LayoutInflater;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.zh.business.shucang.R;
+import com.zh.business.shucang.adapter.index.ADAdapter;
 import com.zh.business.shucang.adapter.index.IndexGoodsAdapter;
 import com.zh.business.shucang.base.BaseFragment;
 import com.zh.business.shucang.databinding.ActivityIndexBinding;
+import com.zh.business.shucang.databinding.HeadIndexBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,11 +61,21 @@ public class IndexFragment extends BaseFragment<ActivityIndexBinding> {
         datas.add("1");
         datas.add("1");
         datas.add("1");
+
+        List<String> datas2 = new ArrayList();
+        datas2.add("1");
+        datas2.add("1");
+        datas2.add("1");
+        datas2.add("1");
+
 //        int imgWidth = (QMUIDisplayHelper.getScreenWidth(MAPP.mapp)  - MAPP.mapp.getResources().getDimensionPixelSize(R.dimen.x45))/2;
 //        LogUtil.e(TAG, imgWidth + "");
         indexGoodsAdapter = new IndexGoodsAdapter(R.layout.item_main_hot, datas);
         indexGoodsAdapter.setEnableLoadMore(true);
-        indexGoodsAdapter.addHeaderView(DataBindingUtil.inflate(LayoutInflater.from(_mActivity), R.layout.head_index, null, false).getRoot());
+        HeadIndexBinding headIndexBinding = DataBindingUtil.inflate(LayoutInflater.from(_mActivity), R.layout.head_index, null, false);
+        headIndexBinding.rvAd.setLayoutManager(new LinearLayoutManager(_mActivity, RecyclerView.HORIZONTAL,false));
+        headIndexBinding.rvAd.setAdapter(new ADAdapter(datas2));
+        indexGoodsAdapter.addHeaderView(headIndexBinding.getRoot());
         binding.rvList.setAdapter(indexGoodsAdapter);
     }
 

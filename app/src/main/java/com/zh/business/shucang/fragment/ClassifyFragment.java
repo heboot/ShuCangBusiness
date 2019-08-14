@@ -17,6 +17,7 @@ import com.zh.business.shucang.base.BaseFragment;
 import com.zh.business.shucang.databinding.FragmentClassifyBinding;
 import com.zh.business.shucang.databinding.HeadClassifyTopBinding;
 import com.zh.business.shucang.databinding.ItemClassifyTopBinding;
+import com.zh.business.shucang.utils.IntentUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,6 +76,8 @@ public class ClassifyFragment extends BaseFragment<FragmentClassifyBinding> {
 
     @Override
     public void initListener() {
-
+        binding.etKey.setOnClickListener((v)->{
+            IntentUtils.toGoodsListActivity();
+        });
     }
 }

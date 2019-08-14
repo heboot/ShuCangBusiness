@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f7f7f9">
+
+        <include
+            android:id="@+id/include_toolbar"
+            layout="@layout/layout_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y60"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></include>
+
+
+        <View
+            android:id="@+id/v1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y1"
+            android:layout_marginTop="@dimen/y10"
+            android:background="#e4e4e7"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include_toolbar"></View>
+
+        <ImageView
+            android:layout_width="@dimen/x12"
+            android:layout_height="@dimen/y13"
+            android:layout_marginLeft="@dimen/x15"
+            android:background="@mipmap/icon_lock"
+            app:layout_constraintBottom_toTopOf="@+id/v2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v1" />
+
+        <TextView
+            android:id="@+id/tv_alter_pwd"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/x43"
+            android:gravity="left|center_vertical"
+            android:text="修改密码"
+            android:textColor="#232323"
+            android:textSize="@dimen/x14"
+            app:layout_constraintBottom_toTopOf="@+id/v2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v1" />
+
+        <ImageView
+            android:layout_width="@dimen/x12"
+            android:layout_height="@dimen/y14"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x16"
+            android:background="@mipmap/icon_arrow_right"
+            app:layout_constraintBottom_toTopOf="@+id/v2"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v1" />
+
+        <View
+            android:id="@+id/v2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y1"
+            android:layout_marginLeft="@dimen/x45"
+            android:layout_marginTop="@dimen/y45"
+            android:background="#e4e4e7"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v1"></View>
+
+
+        <ImageView
+            android:layout_width="@dimen/x12"
+            android:layout_height="@dimen/y13"
+            android:layout_marginLeft="@dimen/x15"
+            android:background="@mipmap/icon_info"
+            app:layout_constraintBottom_toTopOf="@+id/v2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v3" />
+
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/x43"
+            android:gravity="left|center_vertical"
+            android:text="版本信息"
+            android:textColor="#232323"
+            android:textSize="@dimen/x14"
+            app:layout_constraintBottom_toTopOf="@+id/v3"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v2" />
+
+        <TextView
+            android:id="@+id/tv_version_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x43"
+            android:layout_marginRight="@dimen/x31"
+            android:gravity="left|center_vertical"
+            android:text="1.0"
+            android:textColor="#8D8D8D"
+            android:textSize="@dimen/x13"
+            app:layout_constraintBottom_toTopOf="@+id/v3"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v2" />
+
+
+        <ImageView
+            android:layout_width="@dimen/x12"
+            android:layout_height="@dimen/y14"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x16"
+            android:background="@mipmap/icon_arrow_right"
+            app:layout_constraintBottom_toTopOf="@+id/v3"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v2" />
+
+
+        <View
+            android:id="@+id/v3"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y1"
+            android:layout_marginLeft="@dimen/x45"
+            android:layout_marginTop="@dimen/y45"
+            android:background="#e4e4e7"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v2"></View>
+
+        <ImageView
+            android:layout_width="@dimen/x12"
+            android:layout_height="@dimen/y13"
+            android:layout_marginLeft="@dimen/x15"
+            android:background="@mipmap/icon_clear"
+            app:layout_constraintBottom_toTopOf="@+id/v4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v3" />
+
+        <TextView
+            android:id="@+id/tv_clear"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/x43"
+            android:gravity="left|center_vertical"
+            android:text="清理缓存"
+            android:textColor="#232323"
+            android:textSize="@dimen/x14"
+            app:layout_constraintBottom_toTopOf="@+id/v4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v3" />
+
+        <TextView
+            android:id="@+id/tv_clear_me"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x43"
+            android:layout_marginRight="@dimen/x31"
+            android:gravity="left|center_vertical"
+            android:text="0.05m"
+            android:textColor="#8D8D8D"
+            android:textSize="@dimen/x13"
+            app:layout_constraintBottom_toTopOf="@+id/v4"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v3" />
+
+        <ImageView
+            android:layout_width="@dimen/x12"
+            android:layout_height="@dimen/y14"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x16"
+            android:background="@mipmap/icon_arrow_right"
+            app:layout_constraintBottom_toTopOf="@+id/v4"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v3" />
+
+        <View
+            android:id="@+id/v4"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y1"
+            android:layout_marginLeft="@dimen/x45"
+            android:layout_marginTop="@dimen/y45"
+            android:background="#e4e4e7"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v3"></View>
+
+        <ImageView
+            android:layout_width="@dimen/x12"
+            android:layout_height="@dimen/y13"
+            android:layout_marginLeft="@dimen/x15"
+            android:background="@mipmap/icon_about"
+            app:layout_constraintBottom_toTopOf="@+id/v5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v4" />
+
+        <TextView
+            android:id="@+id/tv_about"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/x43"
+            android:gravity="left|center_vertical"
+            android:text="关于蜀仓"
+            android:textColor="#232323"
+            android:textSize="@dimen/x14"
+            app:layout_constraintBottom_toTopOf="@+id/v5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v4" />
+
+        <ImageView
+            android:layout_width="@dimen/x12"
+            android:layout_height="@dimen/y14"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x16"
+            android:background="@mipmap/icon_arrow_right"
+            app:layout_constraintBottom_toTopOf="@+id/v5"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v4" />
+
+
+        <View
+            android:id="@+id/v5"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y1"
+            android:layout_marginTop="@dimen/y45"
+            android:background="#e4e4e7"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v4"></View>
+
+
+        <TextView
+            android:id="@+id/tv_logout"
+            android:layout_width="@dimen/x350"
+            android:layout_height="@dimen/y35"
+            android:layout_marginTop="@dimen/y100"
+            android:background="@drawable/bg_d71b43_5"
+            android:gravity="center"
+            android:text="退出"
+            android:textColor="#fff"
+            android:textSize="@dimen/x12"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v5" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

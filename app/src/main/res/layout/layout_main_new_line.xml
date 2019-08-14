@@ -10,6 +10,7 @@
 
         <ImageView
             android:id="@+id/iv1"
+            android:background="@mipmap/test22"
             android:layout_width="@dimen/x148"
             android:layout_height="@dimen/y96" />
 
@@ -23,7 +24,7 @@
             android:id="@+id/iv2"
             android:layout_width="@dimen/x75"
             android:layout_height="@dimen/y96"
-            android:background="@color/qmui_config_color_red"
+            android:background="@mipmap/test33"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +37,8 @@
             android:id="@+id/iv3"
             android:layout_width="@dimen/x75"
             android:layout_height="@dimen/y96"
-            android:background="@color/qmui_config_color_gray_1"
+            android:background="@mipmap/test44"
+
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,8 +50,8 @@
         <ImageView
             android:id="@+id/iv4"
             android:layout_width="@dimen/x75"
+            android:background="@mipmap/test11"
             android:layout_height="@dimen/y96"
-            android:background="@color/btn_filled_blue_bg_disabled"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

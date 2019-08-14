@@ -19,7 +19,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"></View>
 
-        <EditText
+        <TextView
             android:id="@+id/et_key"
             android:layout_width="@dimen/x265"
             android:layout_height="@dimen/y28"

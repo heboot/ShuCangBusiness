@@ -13,6 +13,7 @@
 
         <com.youth.banner.Banner xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/banner"
+            android:background="@mipmap/test5"
             android:layout_width="match_parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_height="@dimen/y120"

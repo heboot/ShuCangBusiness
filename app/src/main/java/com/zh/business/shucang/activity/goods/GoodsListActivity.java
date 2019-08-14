@@ -1,6 +1,7 @@
 package com.zh.business.shucang.activity.goods;
 
 import android.view.LayoutInflater;
+import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -24,6 +25,7 @@ public class GoodsListActivity extends BaseActivity<ActivityClassifyMoreResultBi
 
     @Override
     public void initUI() {
+        setBackVisibility(View.VISIBLE);
         binding.rvList.setLayoutManager(new GridLayoutManager(this,2));
     }
 

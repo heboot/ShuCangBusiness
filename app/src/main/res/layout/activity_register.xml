@@ -98,6 +98,20 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/iv_vcode" />
 
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_code"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="获取验证码"
+            android:textColor="#D71B43"
+            android:layout_marginRight="@dimen/x16"
+            android:textSize="@dimen/x12"
+            app:layout_constraintBottom_toBottomOf="@+id/v_line4"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_line2" />
+
+
         <View
             android:id="@+id/v_line4"
             android:layout_width="0dp"
@@ -196,7 +210,7 @@
             android:layout_marginTop="@dimen/y83"
             android:background="@drawable/bg_d71b43_5"
             android:gravity="center"
-            android:text="登录"
+            android:text="确认注册"
             android:textColor="#fff"
             android:textSize="@dimen/x12"
             app:layout_constraintLeft_toLeftOf="parent"

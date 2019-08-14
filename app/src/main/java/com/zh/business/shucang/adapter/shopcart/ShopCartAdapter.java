@@ -8,6 +8,7 @@ import com.zh.business.shucang.R;
 import com.zh.business.shucang.adapter.index.IndexGoodsAdapter;
 import com.zh.business.shucang.databinding.ItemMainHotBinding;
 import com.zh.business.shucang.databinding.ItemShopCartBinding;
+import com.zh.business.shucang.utils.IntentUtils;
 
 import java.util.List;
 
@@ -23,6 +24,8 @@ public class ShopCartAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
     @Override
     protected void convert(BaseViewHolder helper, String s) {
         ItemShopCartBinding binding = DataBindingUtil.bind(helper.itemView);
-
+        binding.getRoot().setOnClickListener((v)->{
+            IntentUtils.toGoodsDetailActivity();
+        });
     }
 }

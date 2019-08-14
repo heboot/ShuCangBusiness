@@ -8,6 +8,7 @@ import com.zh.business.shucang.R;
 import com.zh.business.shucang.adapter.shopcart.ShopCartAdapter;
 import com.zh.business.shucang.databinding.ItemAddressBinding;
 import com.zh.business.shucang.databinding.ItemFavBinding;
+import com.zh.business.shucang.utils.IntentUtils;
 
 import java.util.List;
 
@@ -23,6 +24,8 @@ public class FavAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
     @Override
     protected void convert(BaseViewHolder helper, String s) {
         ItemFavBinding binding = DataBindingUtil.bind(helper.itemView);
-
+        binding.getRoot().setOnClickListener((v)->{
+            IntentUtils.toGoodsDetailActivity();
+        });
     }
 }

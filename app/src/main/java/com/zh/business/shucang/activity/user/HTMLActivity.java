@@ -1,6 +1,5 @@
 package com.zh.business.shucang.activity.user;
 
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 

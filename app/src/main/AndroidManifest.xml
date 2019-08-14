@@ -37,6 +37,15 @@
 
         <activity android:name=".activity.user.HTMLActivity"></activity>
 
+        <activity android:name=".activity.user.SettingActivity"></activity>
+
+        <activity android:name=".activity.goods.GoodsDetailActivity"></activity>
+
+        <activity android:name=".activity.order.MyOrderActivity"></activity>
+
+        <activity android:name=".activity.login.LoginActivity"></activity>
+
+        <activity android:name=".activity.login.RegisterActivity"></activity>
     </application>
 
 </manifest>

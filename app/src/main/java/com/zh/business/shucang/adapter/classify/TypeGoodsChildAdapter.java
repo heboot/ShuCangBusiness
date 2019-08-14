@@ -9,6 +9,7 @@ import com.zh.business.shucang.MAPP;
 import com.zh.business.shucang.adapter.index.IndexGoodsAdapter;
 import com.zh.business.shucang.databinding.ItemClassifyGoodsBinding;
 import com.zh.business.shucang.databinding.ItemClassifyTypeBinding;
+import com.zh.business.shucang.utils.IntentUtils;
 
 import java.util.List;
 
@@ -28,6 +29,8 @@ public class TypeGoodsChildAdapter extends BaseQuickAdapter<String, BaseViewHold
     @Override
     protected void convert(BaseViewHolder helper, String s) {
         ItemClassifyGoodsBinding binding = DataBindingUtil.bind(helper.itemView);
-
+        binding.getRoot().setOnClickListener((v)->{
+            IntentUtils.toGoodsDetailActivity();
+        });
     }
 }

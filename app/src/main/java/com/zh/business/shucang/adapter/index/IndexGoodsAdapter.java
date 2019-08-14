@@ -13,6 +13,7 @@ import com.waw.hr.mutils.LogUtil;
 import com.zh.business.shucang.MAPP;
 import com.zh.business.shucang.R;
 import com.zh.business.shucang.databinding.ItemMainHotBinding;
+import com.zh.business.shucang.utils.IntentUtils;
 
 import java.util.List;
 
@@ -32,6 +33,8 @@ public class IndexGoodsAdapter  extends BaseQuickAdapter<String, BaseViewHolder>
     @Override
     protected void convert(BaseViewHolder helper, String s) {
         ItemMainHotBinding binding = DataBindingUtil.bind(helper.itemView);
-
+        binding.getRoot().setOnClickListener((v)->{
+            IntentUtils.toGoodsDetailActivity();
+        });
     }
 }

@@ -3,6 +3,7 @@ package com.zh.business.shucang.utils;
 import android.content.Intent;
 
 import com.zh.business.shucang.MAPP;
+import com.zh.business.shucang.activity.goods.GoodsDetailActivity;
 import com.zh.business.shucang.activity.goods.GoodsListActivity;
 
 public class IntentUtils {
@@ -20,6 +21,9 @@ public class IntentUtils {
         MAPP.mapp.getCurrentActivity().startActivity(intent);
     }
 
-
+    public static void toGoodsDetailActivity(){
+        intent = new Intent(MAPP.mapp.getCurrentActivity(), GoodsDetailActivity.class);
+        MAPP.mapp.getCurrentActivity().startActivity(intent);
+    }
 
 }

@@ -13,7 +13,7 @@
             android:layout_width="@dimen/x80"
             android:layout_height="@dimen/y80"
             android:layout_marginLeft="@dimen/x10"
-            android:background="@color/qmui_config_color_red"
+            android:background="@mipmap/test_goods_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x10"
-            android:text="title"
+            android:text="瓷砖地砖客厅卫生间真石全抛半"
             android:textColor="#212121"
             android:textSize="@dimen/x12"
             app:layout_constraintLeft_toRightOf="@+id/iv_img"

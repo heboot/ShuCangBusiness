@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <com.suke.widget.SwitchButton
+        android:id="@+id/sb_check"
+        android:layout_width="@dimen/x30"
+        android:layout_height="@dimen/y18"
+        app:sb_background="#FFF"
+        app:sb_button_color="#db99c7"
+        app:sb_checked_color="#A36F95"
+        app:sb_checkline_color="#a5dc88"
+        app:sb_shadow_color="#A36F95"
+        app:sb_uncheckcircle_color="#A36F95" />
+</layout>

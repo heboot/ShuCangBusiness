@@ -24,7 +24,7 @@
             android:id="@+id/iv_img"
             android:layout_width="@dimen/x162"
             android:layout_height="@dimen/y162"
-            android:background="@color/qmui_config_color_red"
+            android:background="@mipmap/test_goods_1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x7"
-            android:text="1111"
+            android:text="399.00"
             android:textColor="#FD4479"
             android:textSize="@dimen/x15"
             app:layout_constraintBottom_toBottomOf="@+id/v1"

@@ -4,11 +4,13 @@ package com.zh.business.shucang.fragment;
 import android.os.Bundle;
 
 import com.zh.business.shucang.R;
+import com.zh.business.shucang.activity.order.MyOrderActivity;
 import com.zh.business.shucang.activity.user.AddAddressActivity;
 import com.zh.business.shucang.activity.user.AddressListActivity;
 import com.zh.business.shucang.activity.user.FavActivity;
 import com.zh.business.shucang.activity.user.HTMLActivity;
 import com.zh.business.shucang.activity.user.InfoActivity;
+import com.zh.business.shucang.activity.user.SettingActivity;
 import com.zh.business.shucang.base.BaseFragment;
 import com.zh.business.shucang.databinding.FragmentMyBinding;
 import com.zh.business.shucang.utils.IntentUtils;
@@ -61,13 +63,22 @@ public class MyFragment extends BaseFragment<FragmentMyBinding> {
     @Override
     public void initListener() {
         binding.ivAvatarBg.setOnClickListener((v)->{
-            IntentUtils.doIntent(HTMLActivity.class);
+            IntentUtils.doIntent(InfoActivity.class);
         });
         binding.includeAddress.getRoot().setOnClickListener((v)->{
             IntentUtils.doIntent(AddressListActivity.class);
         });
         binding.includeFav.getRoot().setOnClickListener((v)->{
             IntentUtils.doIntent(FavActivity.class);
+        });
+        binding.includeOrder.getRoot().setOnClickListener((v)->{
+            IntentUtils.doIntent(MyOrderActivity.class);
+        });
+        binding.includeOrderTypes.getRoot().setOnClickListener((v)->{
+            IntentUtils.doIntent(MyOrderActivity.class);
+        });
+        binding.includeSetting.getRoot().setOnClickListener((v)->{
+            IntentUtils.doIntent(SettingActivity.class);
         });
     }
 }

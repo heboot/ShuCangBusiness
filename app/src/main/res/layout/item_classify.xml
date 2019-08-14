@@ -13,7 +13,7 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="吃"
+            android:text="地砖"
             android:textColor="#272727"
             android:textSize="@dimen/x13"
             app:layout_constraintBottom_toBottomOf="parent"
