@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="@dimen/x45"
+            android:layout_height="@dimen/y45"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginTop="@dimen/y13"
+            android:background="@mipmap/test_2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:textColor="#212121"
+            android:textSize="@dimen/x12"
+            android:text="瓷砖地砖客厅卫生间真石全抛半"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x11"
+            android:layout_marginTop="@dimen/y3"
+            app:layout_constraintLeft_toRightOf="@+id/iv_img"
+            app:layout_constraintTop_toTopOf="@+id/iv_img" />
+
+        <TextView
+            android:textColor="#A3A3A3"
+            android:textSize="@dimen/x10"
+            android:text="瓷砖地砖客厅卫生间真石全抛半"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x11"
+            android:layout_marginTop="@dimen/y12"
+            app:layout_constraintLeft_toRightOf="@+id/iv_img"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_marginLeft="@dimen/x15"
+            android:text="瓷砖已经开始铺垫了，东西特别的棒尤其的去实体店过后相比起来性价比十足。"
+            android:textColor="#919090"
+            android:textSize="@dimen/x10"
+            android:layout_marginTop="@dimen/y15"
+            app:layout_constraintTop_toBottomOf="@+id/iv_img"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_marginTop="@dimen/y10"
+            android:background="#ffe4e4e7"
+            app:layout_constraintTop_toBottomOf="@+id/tv_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y1"></View>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

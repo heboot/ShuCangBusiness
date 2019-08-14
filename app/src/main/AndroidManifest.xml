@@ -46,6 +46,8 @@
         <activity android:name=".activity.login.LoginActivity"></activity>
 
         <activity android:name=".activity.login.RegisterActivity"></activity>
+
+        <activity android:name=".activity.user.CommentActivity"></activity>
     </application>
 
 </manifest>

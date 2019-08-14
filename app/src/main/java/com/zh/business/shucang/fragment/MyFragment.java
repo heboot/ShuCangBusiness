@@ -7,6 +7,7 @@ import com.zh.business.shucang.R;
 import com.zh.business.shucang.activity.order.MyOrderActivity;
 import com.zh.business.shucang.activity.user.AddAddressActivity;
 import com.zh.business.shucang.activity.user.AddressListActivity;
+import com.zh.business.shucang.activity.user.CommentActivity;
 import com.zh.business.shucang.activity.user.FavActivity;
 import com.zh.business.shucang.activity.user.HTMLActivity;
 import com.zh.business.shucang.activity.user.InfoActivity;
@@ -79,6 +80,9 @@ public class MyFragment extends BaseFragment<FragmentMyBinding> {
         });
         binding.includeSetting.getRoot().setOnClickListener((v)->{
             IntentUtils.doIntent(SettingActivity.class);
+        });
+        binding.includeComment.getRoot().setOnClickListener((v)->{
+            IntentUtils.doIntent(CommentActivity.class);
         });
     }
 }
