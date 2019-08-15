@@ -35,8 +35,7 @@ public class MyOrderActivity extends BaseActivity<ActivityMyOrdersBinding> {
         fragmentList.add(new OrderFragment());
         fragmentList.add(new OrderFragment());
         fragmentList.add(new OrderFragment());
-        fragmentList.add(new OrderFragment());
-        String [] titles = {"全部","待付款","配送中","已完成","退款单"};
+        String [] titles = {"全部","待付款","配送中","已完成"};
         binding.tab.setViewPager(binding.vpContainer,titles,this,fragmentList);
 
         /** 关联ViewPager,用于连适配器都不想自己实例化的情况 */

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x17"
+            android:layout_marginTop="@dimen/y18"
+            android:text="支付方式"
+            android:textColor="#3A3A3A"
+            android:textSize="@dimen/x13"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/v1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y1"
+            android:layout_marginLeft="@dimen/x16"
+            android:layout_marginTop="@dimen/y45"
+            android:background="#ffe4e4e7"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></View>
+
+        <ImageView
+            android:id="@+id/iv_alipay"
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/y30"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginTop="@dimen/y15"
+            android:background="@mipmap/icon_alipay"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v1" />
+
+        <TextView
+            android:id="@+id/tv_alipay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/x10"
+            android:gravity="center_vertical"
+            android:text="支付宝支付"
+            android:textColor="#ff3a3a3a"
+            android:textSize="@dimen/x14"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_alipay"
+            app:layout_constraintLeft_toRightOf="@+id/iv_alipay"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_alipay" />
+
+        <CheckBox
+            android:checked="true"
+            android:id="@+id/cb_alipay"
+            android:layout_width="@dimen/x16"
+            android:layout_height="@dimen/y16"
+            android:layout_marginRight="@dimen/x17"
+            android:background="@drawable/selector_check_red"
+            android:button="@null"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_alipay"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_alipay" />
+
+
+        <ImageView
+            android:id="@+id/iv_wx"
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/y30"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginTop="@dimen/y18"
+            android:background="@mipmap/icon_wx"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_alipay" />
+
+        <TextView
+            android:id="@+id/tv_wx"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/x10"
+            android:gravity="center_vertical"
+            android:text="微信支付"
+            android:textColor="#ff3a3a3a"
+            android:textSize="@dimen/x14"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_wx"
+            app:layout_constraintLeft_toRightOf="@+id/iv_wx"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_wx" />
+
+        <CheckBox
+            android:id="@+id/cb_wx"
+            android:layout_width="@dimen/x16"
+            android:layout_height="@dimen/y16"
+            android:layout_marginRight="@dimen/x17"
+            android:background="@drawable/selector_check_red"
+            android:button="@null"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_wx"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_wx" />
+
+
+        <ImageView
+            android:id="@+id/iv_huodao"
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/y30"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginTop="@dimen/y18"
+            android:background="@mipmap/icon_daofu"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_wx" />
+
+        <TextView
+            android:id="@+id/tv_huodao"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/x10"
+            android:gravity="center_vertical"
+            android:text="货到付款"
+            android:textColor="#ff3a3a3a"
+            android:textSize="@dimen/x14"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_huodao"
+            app:layout_constraintLeft_toRightOf="@+id/iv_huodao"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_huodao" />
+
+        <CheckBox
+            android:id="@+id/cb_huodao"
+            android:layout_width="@dimen/x16"
+            android:layout_height="@dimen/y16"
+            android:layout_marginRight="@dimen/x17"
+            android:background="@drawable/selector_check_red"
+            android:button="@null"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_huodao"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_huodao" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_marginTop="@dimen/y18"
+            android:layout_height="@dimen/y10"
+            android:background="#f7f7f7"
+            app:layout_constraintTop_toBottomOf="@+id/iv_huodao"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"></View>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

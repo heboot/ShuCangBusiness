@@ -48,6 +48,10 @@
         <activity android:name=".activity.login.RegisterActivity"></activity>
 
         <activity android:name=".activity.user.CommentActivity"></activity>
+
+        <activity android:name=".activity.order.OrderDetailActivity"></activity>
+
+        <activity android:name=".activity.login.ForgetActivity"></activity>
     </application>
 
 </manifest>

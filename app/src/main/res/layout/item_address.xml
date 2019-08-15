@@ -60,6 +60,7 @@
             android:layout_marginLeft="@dimen/x15"
             android:layout_marginTop="@dimen/y13"
             android:button="@null"
+            android:background="@drawable/selector_check_red"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v1" />
 

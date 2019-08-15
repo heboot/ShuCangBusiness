@@ -30,5 +30,8 @@ public class SettingActivity extends BaseActivity<ActivitySettingBinding> {
         binding.tvLogout.setOnClickListener((v)->{
             IntentUtils.doIntent( LoginActivity.class);
         });
+        binding.tvAlterPwd.setOnClickListener((v)->{
+
+        });
     }
 }

@@ -5,6 +5,7 @@ import android.view.View;
 import com.zh.business.shucang.R;
 import com.zh.business.shucang.base.BaseActivity;
 import com.zh.business.shucang.databinding.ActivityGoodsDetailBinding;
+import com.zh.business.shucang.utils.IntentUtils;
 
 public class GoodsDetailActivity extends BaseActivity<ActivityGoodsDetailBinding> {
     @Override
@@ -25,6 +26,8 @@ public class GoodsDetailActivity extends BaseActivity<ActivityGoodsDetailBinding
 
     @Override
     public void initListener() {
-
+        binding.tvBuy.setOnClickListener((v)->{
+            IntentUtils.toOrderDetailActivity();
+        });
     }
 }

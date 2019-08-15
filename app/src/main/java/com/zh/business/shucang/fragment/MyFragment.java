@@ -1,6 +1,7 @@
 package com.zh.business.shucang.fragment;
 
 
+import android.location.Address;
 import android.os.Bundle;
 
 import com.zh.business.shucang.R;
@@ -13,6 +14,7 @@ import com.zh.business.shucang.activity.user.HTMLActivity;
 import com.zh.business.shucang.activity.user.InfoActivity;
 import com.zh.business.shucang.activity.user.SettingActivity;
 import com.zh.business.shucang.base.BaseFragment;
+import com.zh.business.shucang.common.AddressListType;
 import com.zh.business.shucang.databinding.FragmentMyBinding;
 import com.zh.business.shucang.utils.IntentUtils;
 
@@ -63,25 +65,25 @@ public class MyFragment extends BaseFragment<FragmentMyBinding> {
 
     @Override
     public void initListener() {
-        binding.ivAvatarBg.setOnClickListener((v)->{
+        binding.ivAvatarBg.setOnClickListener((v) -> {
             IntentUtils.doIntent(InfoActivity.class);
         });
-        binding.includeAddress.getRoot().setOnClickListener((v)->{
-            IntentUtils.doIntent(AddressListActivity.class);
+        binding.includeAddress.getRoot().setOnClickListener((v) -> {
+            IntentUtils.toAddressListActivity(AddressListType.VIWE);
         });
-        binding.includeFav.getRoot().setOnClickListener((v)->{
+        binding.includeFav.getRoot().setOnClickListener((v) -> {
             IntentUtils.doIntent(FavActivity.class);
         });
-        binding.includeOrder.getRoot().setOnClickListener((v)->{
+        binding.includeOrder.getRoot().setOnClickListener((v) -> {
             IntentUtils.doIntent(MyOrderActivity.class);
         });
-        binding.includeOrderTypes.getRoot().setOnClickListener((v)->{
+        binding.includeOrderTypes.getRoot().setOnClickListener((v) -> {
             IntentUtils.doIntent(MyOrderActivity.class);
         });
-        binding.includeSetting.getRoot().setOnClickListener((v)->{
+        binding.includeSetting.getRoot().setOnClickListener((v) -> {
             IntentUtils.doIntent(SettingActivity.class);
         });
-        binding.includeComment.getRoot().setOnClickListener((v)->{
+        binding.includeComment.getRoot().setOnClickListener((v) -> {
             IntentUtils.doIntent(CommentActivity.class);
         });
     }

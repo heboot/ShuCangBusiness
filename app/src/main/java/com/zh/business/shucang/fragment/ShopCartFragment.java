@@ -32,7 +32,7 @@ public class ShopCartFragment extends BaseFragment<ActivityShopCartBinding> {
 
     @Override
     public void initUI() {
-        binding.rvList.setLayoutManager(new LinearLayoutManager(_mActivity, RecyclerView.VERTICAL,false));
+        binding.rvList.setLayoutManager(new LinearLayoutManager(_mActivity, RecyclerView.VERTICAL, false));
     }
 
     @Override
@@ -55,7 +55,7 @@ public class ShopCartFragment extends BaseFragment<ActivityShopCartBinding> {
         datas.add("1");
 //        int imgWidth = (QMUIDisplayHelper.getScreenWidth(MAPP.mapp)  - MAPP.mapp.getResources().getDimensionPixelSize(R.dimen.x45))/2;
 //        LogUtil.e(TAG, imgWidth + "");
-        shopCartAdapter = new ShopCartAdapter( datas);
+        shopCartAdapter = new ShopCartAdapter(datas);
         binding.rvList.setAdapter(shopCartAdapter);
     }
 

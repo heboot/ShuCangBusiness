@@ -51,8 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x13"
             android:background="@null"
+            android:hint="请输入手机号码"
             android:inputType="number"
-            android:text="111"
             android:textColor="#6B6B6B"
             android:textSize="@dimen/x15"
             app:layout_constraintBottom_toBottomOf="@+id/iv_mobile"
@@ -78,7 +78,7 @@
             android:layout_height="@dimen/y17"
             android:layout_marginLeft="@dimen/x17"
             android:layout_marginTop="@dimen/y18"
-            android:background="@mipmap/icon_pwd"
+            android:background="@mipmap/icon_vcode"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v_line2" />
 
@@ -89,8 +89,8 @@
             android:layout_marginLeft="@dimen/x13"
             android:layout_marginRight="@dimen/x10"
             android:background="@null"
+            android:hint="请输入验证码"
             android:inputType="number"
-            android:text="111"
             android:textColor="#6B6B6B"
             android:textSize="@dimen/x15"
             app:layout_constraintBottom_toBottomOf="@+id/iv_vcode"
@@ -99,13 +99,13 @@
             app:layout_constraintTop_toTopOf="@+id/iv_vcode" />
 
         <TextView
-            android:gravity="center"
             android:id="@+id/tv_code"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:layout_marginRight="@dimen/x16"
+            android:gravity="center"
             android:text="获取验证码"
             android:textColor="#D71B43"
-            android:layout_marginRight="@dimen/x16"
             android:textSize="@dimen/x12"
             app:layout_constraintBottom_toBottomOf="@+id/v_line4"
             app:layout_constraintRight_toRightOf="parent"
@@ -130,7 +130,7 @@
             android:layout_height="@dimen/y17"
             android:layout_marginLeft="@dimen/x17"
             android:layout_marginTop="@dimen/y18"
-            android:background="@mipmap/icon_pwd"
+            android:background="@mipmap/icon_pwd_register"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v_line4" />
 
@@ -141,8 +141,8 @@
             android:layout_marginLeft="@dimen/x13"
             android:layout_marginRight="@dimen/x10"
             android:background="@null"
+            android:hint="请输入密码"
             android:inputType="textPassword"
-            android:text="222"
             android:textColor="#6B6B6B"
             android:textSize="@dimen/x15"
             app:layout_constraintBottom_toBottomOf="@+id/iv_pwd"
@@ -160,19 +160,24 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_pwd"></View>
 
-        <Switch
+        <TextView
             android:id="@+id/switch_showpwd"
-            android:layout_width="@dimen/x28"
-            android:layout_height="@dimen/y16"
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/y20"
             android:layout_marginRight="@dimen/x16"
+            android:background="@mipmap/icon_show_pwd_red"
+            android:showText="true"
+            android:textOff="abc"
+            android:textOn="on"
             app:layout_constraintBottom_toTopOf="@+id/v_line3"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v_line4" />
 
         <LinearLayout
+            android:id="@+id/llyt_protocol"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/y15"
+            android:layout_height="@dimen/y50"
+
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -181,9 +186,11 @@
 
 
             <CheckBox
+                android:checked="true"
                 android:id="@+id/cb_check"
-                android:layout_width="@dimen/x10"
-                android:layout_height="@dimen/y10"
+                android:layout_width="@dimen/x12"
+                android:layout_height="@dimen/y12"
+                android:background="@drawable/selector_check_orange"
                 android:button="@null" />
 
             <TextView
@@ -206,7 +213,7 @@
 
         <TextView
             android:layout_width="@dimen/x250"
-            android:layout_height="@dimen/y30"
+            android:layout_height="@dimen/y35"
             android:layout_marginTop="@dimen/y83"
             android:background="@drawable/bg_d71b43_5"
             android:gravity="center"

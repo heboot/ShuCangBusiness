@@ -19,6 +19,8 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             app:layout_constraintBottom_toTopOf="@+id/tv_pay"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -101,6 +103,28 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/v_line1" />
 
+                <TextView
+                    android:id="@+id/tv_alter_address"
+                    android:layout_width="@dimen/x50"
+                    android:layout_height="0dp"
+                    android:layout_marginRight="@dimen/x28"
+                    android:gravity="center"
+                    android:text="更换地址"
+                    android:textColor="#ffacacac"
+                    android:textSize="@dimen/x12"
+                    app:layout_constraintBottom_toTopOf="@+id/v_line2"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/v_line1" />
+
+                <View
+                    android:layout_width="@dimen/x9"
+                    android:layout_height="@dimen/y15"
+                    android:layout_marginRight="@dimen/x16"
+                    android:background="@mipmap/icon_arrow_right"
+                    app:layout_constraintBottom_toTopOf="@+id/v_line2"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/v_line1"></View>
+
                 <View
                     android:id="@+id/v_line2"
                     android:layout_width="0dp"
@@ -111,16 +135,29 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_addr"></View>
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <com.zh.business.shucang.view.PayTypesView
+                    android:id="@+id/include_paytype"
+                    layout="@layout/layout_pay_types"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/v_line2"></com.zh.business.shucang.view.PayTypesView>
+
+
+                <TextView
+                    android:id="@+id/tv_goods_list"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:layout_marginLeft="@dimen/x17"
-                    android:layout_marginTop="@dimen/y15"
+                    android:gravity="center_vertical"
                     android:text="商品清单"
                     android:textColor="#2F2F2F"
                     android:textSize="@dimen/x15"
+                    app:layout_constraintBottom_toTopOf="@+id/v_line3"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/v_line2" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/include_paytype" />
 
                 <View
                     android:id="@+id/v_line3"
@@ -130,7 +167,7 @@
                     android:background="#ffe4e4e7"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/v_line2"></View>
+                    app:layout_constraintTop_toBottomOf="@+id/include_paytype"></View>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -141,21 +178,23 @@
                     android:textSize="@dimen/x14"
                     app:layout_constraintBottom_toTopOf="@+id/v_line3"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/v_line2" />
+                    app:layout_constraintTop_toBottomOf="@+id/include_paytype" />
 
                 <View
+                    android:id="@+id/v_arrow"
                     android:layout_width="@dimen/x15"
                     android:layout_height="@dimen/y9"
                     android:layout_marginRight="@dimen/x16"
                     android:background="@mipmap/icon_arrow_down"
                     app:layout_constraintBottom_toTopOf="@+id/v_line3"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/v_line2"></View>
+                    app:layout_constraintTop_toBottomOf="@+id/include_paytype"></View>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_list"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:focusable="false"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/v_line3"></androidx.recyclerview.widget.RecyclerView>
@@ -170,47 +209,47 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rv_list"></View>
 
-                <ImageView
-                    android:layout_width="@dimen/x16"
-                    android:layout_height="@dimen/y13"
-                    android:layout_marginLeft="@dimen/x15"
-                    android:background="@mipmap/icon_coin"
-                    app:layout_constraintBottom_toTopOf="@+id/v_line5"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/v_line4" />
+                <!--<ImageView-->
+                    <!--android:layout_width="@dimen/x16"-->
+                    <!--android:layout_height="@dimen/y13"-->
+                    <!--android:layout_marginLeft="@dimen/x15"-->
+                    <!--android:background="@mipmap/icon_coin"-->
+                    <!--app:layout_constraintBottom_toTopOf="@+id/v_line5"-->
+                    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                    <!--app:layout_constraintTop_toBottomOf="@+id/v_line4" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/x35"
-                    android:text="钻石经销商折扣"
-                    android:textColor="#1E7DC2"
-                    android:textSize="@dimen/x12"
-                    app:layout_constraintBottom_toTopOf="@+id/v_line5"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/v_line4" />
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="@dimen/x35"-->
+                    <!--android:text="钻石经销商折扣"-->
+                    <!--android:textColor="#1E7DC2"-->
+                    <!--android:textSize="@dimen/x12"-->
+                    <!--app:layout_constraintBottom_toTopOf="@+id/v_line5"-->
+                    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                    <!--app:layout_constraintTop_toBottomOf="@+id/v_line4" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/x16"
-                    android:text="85×0.88(钻石折扣)=74.8"
-                    android:textColor="#D71B43"
-                    android:textSize="@dimen/x12"
-                    app:layout_constraintBottom_toTopOf="@+id/v_line5"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/v_line4" />
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginRight="@dimen/x16"-->
+                    <!--android:text="85×0.88(钻石折扣)=74.8"-->
+                    <!--android:textColor="#D71B43"-->
+                    <!--android:textSize="@dimen/x12"-->
+                    <!--app:layout_constraintBottom_toTopOf="@+id/v_line5"-->
+                    <!--app:layout_constraintRight_toRightOf="parent"-->
+                    <!--app:layout_constraintTop_toBottomOf="@+id/v_line4" />-->
 
 
-                <View
-                    android:id="@+id/v_line5"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/y1"
-                    android:layout_marginTop="@dimen/y35"
-                    android:background="#ffe4e4e7"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/v_line4"></View>
+                <!--<View-->
+                    <!--android:id="@+id/v_line5"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="@dimen/y1"-->
+                    <!--android:layout_marginTop="@dimen/y35"-->
+                    <!--android:background="#ffe4e4e7"-->
+                    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                    <!--app:layout_constraintRight_toRightOf="parent"-->
+                    <!--app:layout_constraintTop_toBottomOf="@+id/v_line4"></View>-->
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -221,7 +260,7 @@
                     android:textColor="#747474"
                     android:textSize="@dimen/x12"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/v_line5" />
+                    app:layout_constraintTop_toBottomOf="@+id/v_line4" />
 
 
                 <TextView
@@ -234,7 +273,7 @@
                     android:textColor="#747474"
                     android:textSize="@dimen/x12"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/v_line5" />
+                    app:layout_constraintTop_toBottomOf="@+id/v_line4" />
 
                 <View
                     android:id="@+id/v_line6"
