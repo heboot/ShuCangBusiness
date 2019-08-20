@@ -79,6 +79,13 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends FragmentAc
         }
     }
 
+
+    protected void dismissLoadingDialog() {
+        if (loadingDialog != null && loadingDialog.isShowing()) {
+            loadingDialog.dismiss();
+        }
+    }
+
     protected void setBackVisibility(int v){
         if(vBack != null){
             vBack.setVisibility(v);

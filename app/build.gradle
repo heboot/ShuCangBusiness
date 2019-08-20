@@ -11,16 +11,39 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        releaseConfig {
+            keyAlias 'release'
+            keyPassword '753951'
+            storeFile file('D:/workSpace/ShuCangBusiness/business_sc.jks')
+            storePassword '753951'
+        }
+        debug {
+            keyAlias 'release'
+            keyPassword '753951'
+            storeFile file('D:/workSpace/ShuCangBusiness/business_sc.jks')
+            storePassword '753951'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseConfig
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseConfig
         }
     }
 
     dataBinding {
         enabled = true
     }
+
 
 
     sourceSets{
@@ -58,4 +81,6 @@ dependencies {
     api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
     api 'com.daimajia.easing:library:2.0@aar'
     api 'com.daimajia.androidanimations:library:2.3@aar'
+
+//    api 'com.amap.api:location:latest.integration'
 }

@@ -12,6 +12,7 @@ import com.zh.business.shucang.base.BaseActivity;
 import com.zh.business.shucang.databinding.ActivityGoodsDetailBinding;
 import com.zh.business.shucang.http.HttpObserver;
 import com.zh.business.shucang.service.GoodsService;
+import com.zh.business.shucang.service.UserService;
 import com.zh.business.shucang.utils.GoodsDetailImageLoader;
 import com.zh.business.shucang.utils.IntentUtils;
 import com.zh.business.shucang.utils.SignUtils;
@@ -51,12 +52,10 @@ public class GoodsDetailActivity extends BaseActivity<ActivityGoodsDetailBinding
             IntentUtils.toOrderDetailActivity();
         });
         binding.vFav.setOnClickListener((v) -> {
-            if (goodsDetailBean.getSign() == 0) {
-                fav();
-            }
+            fav();
         });
-        binding.vShopcart.setOnClickListener((v)->{
-            if(goodsService == null){
+        binding.vShopcart.setOnClickListener((v) -> {
+            if (goodsService == null) {
                 goodsService = new GoodsService();
             }
             goodsService.addShopCart(goodsID);
@@ -85,11 +84,19 @@ public class GoodsDetailActivity extends BaseActivity<ActivityGoodsDetailBinding
     private void fav() {
         params = SignUtils.getNormalParams();
         params.put(MKey.ID, goodsID);
-        HttpClient.Builder.getServer().collect(params).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<Object>() {
+        HttpClient.Builder.getServer().collect(UserService.getInstance().getToken(), params).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<Object>() {
             @Override
             public void onSuccess(BaseBean<Object> baseBean) {
-                goodsDetailBean.setSign(1);
-                binding.ivFav.setBackgroundResource(R.drawable.ic_favorite_black_24dp);
+                tipDialog = DialogUtils.getSuclDialog(GoodsDetailActivity.this, baseBean.getMsg(), true);
+                tipDialog.show();
+                if (goodsDetailBean.getSign() == 0) {
+                    goodsDetailBean.setSign(1);
+                    binding.ivFav.setBackgroundResource(R.drawable.ic_favorite_black_24dp);
+                } else {
+                    goodsDetailBean.setSign(0);
+                    binding.ivFav.setBackgroundResource(R.mipmap.icon_goods_fav);
+                }
+
             }
 
             @Override
@@ -117,6 +124,10 @@ public class GoodsDetailActivity extends BaseActivity<ActivityGoodsDetailBinding
             binding.ivFav.setBackgroundResource(R.drawable.ic_favorite_black_24dp);
         } else {
             binding.ivFav.setBackgroundResource(R.mipmap.icon_goods_fav);
+        }
+
+        if (!UserService.getInstance().isLoginValue()) {
+            binding.tvAddress.setText("请添加收货地址");
         }
     }
 

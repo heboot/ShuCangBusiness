@@ -35,13 +35,6 @@ public interface HttpClient {
     }
 
 
-    @FormUrlEncoded
-    @POST("api/complete")
-    Observable<BaseBean<Map>> editInfo(@Header("token") String token,@FieldMap Map<String, Object> params);
-
-    @FormUrlEncoded
-    @POST("api/register")
-    Observable<BaseBean<String>> register(@FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
     @POST("api/login")
@@ -55,11 +48,11 @@ public interface HttpClient {
 
     @FormUrlEncoded
     @POST("api/code")
-    Observable<BaseBean<String>> getcode(@FieldMap Map<String, Object> params);
+    Observable<BaseBean<String>> code(@FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
-    @POST("api/applyLimit")
-    Observable<BaseBean<Object>> applyLimit(@Header("token") String token,@FieldMap Map<String, Object> params);
+    @POST("api/register")
+    Observable<BaseBean<String>> register(@FieldMap Map<String, Object> params);
 
 
     @FormUrlEncoded
@@ -80,8 +73,11 @@ public interface HttpClient {
     Observable<BaseBean<GoodsDetailBean>> goodsInfo(@QueryMap Map<String, Object> params);
 
     @GET("api/collect")
-    Observable<BaseBean<Object>> collect(@QueryMap Map<String, Object> params);
+    Observable<BaseBean<Object>> collect(@Header("token") String token,@QueryMap Map<String, Object> params);
 
     @GET("api/addCar")
     Observable<BaseBean<Object>> addCar(@Header("token") String token,@QueryMap Map<String, Object> params);
+
+
+
 }

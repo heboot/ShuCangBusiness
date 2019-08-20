@@ -67,7 +67,7 @@ ext {
             MINIFY_DISABLED    : false,
 
             // 应用程序包名
-            APPLICATION_ID     : 'com.gdlife.candypie',
+            APPLICATION_ID     : 'com.zh.business.shucang',
 
 //            DEBUGENABLE        : false,
 

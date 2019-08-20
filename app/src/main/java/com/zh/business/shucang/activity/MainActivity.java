@@ -7,6 +7,7 @@ import com.zh.business.shucang.fragment.ClassifyFragment;
 import com.zh.business.shucang.fragment.IndexFragment;
 import com.zh.business.shucang.fragment.MyFragment;
 import com.zh.business.shucang.fragment.ShopCartFragment;
+import com.zh.business.shucang.utils.LocationUtils;
 
 import me.yokeyword.fragmentation.ISupportFragment;
 
