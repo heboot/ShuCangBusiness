@@ -31,7 +31,6 @@
                 android:background="#f7f7f9">
 
                 <com.youth.banner.Banner
-                    android:background="@mipmap/testdetail"
                     android:id="@+id/banner"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/y225"
@@ -252,6 +251,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/llyt_tip" />
 
                 <View
+
                     android:layout_width="0dp"
                     android:layout_height="@dimen/y1"
                     android:layout_marginTop="@dimen/y10"
@@ -260,7 +260,18 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_detail_title"></View>
 
-
+                <TextView
+                    android:id="@+id/tv_detail_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y10"
+                    android:padding="@dimen/x10"
+                    android:text="商品详情"
+                    android:textColor="#1F1F1F"
+                    android:textSize="@dimen/x13"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_detail_title" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
@@ -287,6 +298,7 @@
 
 
         <ImageView
+            android:id="@+id/iv_fav"
             android:layout_width="@dimen/x12"
             android:layout_height="@dimen/y12"
             android:layout_marginTop="@dimen/y6"
@@ -296,12 +308,25 @@
             app:layout_constraintTop_toBottomOf="@+id/v_line1" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/y21"
+            android:gravity="center_horizontal|bottom"
             android:text="收藏"
             android:textColor="#828282"
             android:textSize="@dimen/x10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/v_line2"
+            app:layout_constraintTop_toBottomOf="@+id/v_line1" />
+
+        <View
+            android:id="@+id/v_fav"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textColor="#828282"
+            android:textSize="@dimen/x10"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/v_line2"
             app:layout_constraintTop_toBottomOf="@+id/v_line1" />
@@ -322,6 +347,17 @@
             android:text="购物车"
             android:textColor="#828282"
             android:textSize="@dimen/x10"
+            app:layout_constraintLeft_toRightOf="@+id/v_line2"
+            app:layout_constraintRight_toLeftOf="@+id/tv_buy"
+            app:layout_constraintTop_toBottomOf="@+id/v_line1" />
+
+        <View
+            android:id="@+id/v_shopcart"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textColor="#828282"
+            android:textSize="@dimen/x10"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/v_line2"
             app:layout_constraintRight_toLeftOf="@+id/tv_buy"
             app:layout_constraintTop_toBottomOf="@+id/v_line1" />

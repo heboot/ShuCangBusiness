@@ -1,0 +1,758 @@
+[
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-fire-blue",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                386,
+                615,
+                128,
+                233
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                128,
+                233
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-deck-5",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                334,
+                428,
+                148,
+                185
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                148,
+                185
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-bullet-3",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                937,
+                150,
+                77,
+                208
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                77,
+                208
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-top-4",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                848,
+                684,
+                120,
+                134
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                120,
+                134
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-3",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                853,
+                820,
+                90,
+                146
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                90,
+                146
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-bullet-5",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                516,
+                557,
+                86,
+                218
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                86,
+                218
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-deck-1",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                711,
+                706,
+                135,
+                125
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                135,
+                125
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "net_5_03",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                256,
+                861,
+                128,
+                128
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                128,
+                128
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-7",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                794,
+                150,
+                141,
+                183
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                141,
+                183
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-fire-green",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                256,
+                626,
+                128,
+                233
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                128,
+                233
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-6",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                386,
+                850,
+                146,
+                172
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                146,
+                172
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-bullet-4",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                534,
+                777,
+                79,
+                201
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                79,
+                201
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-deck-7",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                2,
+                2,
+                498,
+                189
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                498,
+                189
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-bullet-7",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                794,
+                335,
+                107,
+                175
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                107,
+                175
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-deck-6",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                2,
+                193,
+                364,
+                210
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                364,
+                210
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-fire-red",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                498,
+                193,
+                128,
+                232
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                128,
+                232
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-bullet-2",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                604,
+                557,
+                47,
+                201
+            ],
+            "offset": [
+                0,
+                -2
+            ],
+            "originalSize": [
+                51,
+                205
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-fire-purple",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                368,
+                193,
+                128,
+                233
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                128,
+                233
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-deck-2",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                2,
+                884,
+                189,
+                124
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                189,
+                124
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-deck-4",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                711,
+                833,
+                140,
+                116
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                140,
+                116
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-sj02-7",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                534,
+                980,
+                27,
+                39
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                27,
+                39
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-sj01-7",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                193,
+                884,
+                39,
+                50
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                39,
+                50
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-5",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                2,
+                405,
+                330,
+                219
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                330,
+                219
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-net-2",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                2,
+                626,
+                252,
+                256
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                256,
+                256
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "bullet6_02",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                903,
+                360,
+                96,
+                192
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                96,
+                192
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "bullet6_00",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                615,
+                760,
+                94,
+                192
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                96,
+                192
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "net_5_02",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                498,
+                427,
+                128,
+                128
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                128,
+                128
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-sj03-7",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                989,
+                2,
+                27,
+                39
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                27,
+                39
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "bullet6_01",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                745,
+                512,
+                96,
+                192
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                96,
+                192
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-4",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                502,
+                2,
+                287,
+                169
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                287,
+                169
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-2",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                893,
+                554,
+                107,
+                128
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                107,
+                128
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-deck-3",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                791,
+                2,
+                196,
+                146
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                196,
+                146
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-bullet-1",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                843,
+                512,
+                48,
+                166
+            ],
+            "offset": [
+                0,
+                3
+            ],
+            "originalSize": [
+                58,
+                192
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-net-1",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                628,
+                173,
+                164,
+                164
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                164,
+                164
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-1",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                653,
+                496,
+                90,
+                200
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                90,
+                200
+            ]
+        }
+    },
+    {
+        "__type__": "cc.SpriteFrame",
+        "content": {
+            "name": "gun-top-5",
+            "texture": "83Eimitq1K3Y50VTSSa6rI",
+            "rect": [
+                628,
+                339,
+                164,
+                155
+            ],
+            "offset": [
+                0,
+                0
+            ],
+            "originalSize": [
+                164,
+                155
+            ]
+        }
+    }
+]

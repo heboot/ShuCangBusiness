@@ -25,11 +25,15 @@ public class IntentUtils {
         MAPP.mapp.getCurrentActivity().startActivity(intent);
     }
 
-    public static void toGoodsDetailActivity(){
+    public static void toGoodsDetailActivity(int id){
+        intent = new Intent(MAPP.mapp.getCurrentActivity(), GoodsDetailActivity.class);
+        intent.putExtra(MKey.ID,String.valueOf(id));
+        MAPP.mapp.getCurrentActivity().startActivity(intent);
+    }
+    public static void toGoodsDetailActivity( ){
         intent = new Intent(MAPP.mapp.getCurrentActivity(), GoodsDetailActivity.class);
         MAPP.mapp.getCurrentActivity().startActivity(intent);
     }
-
     public static void toOrderDetailActivity(){
         intent = new Intent(MAPP.mapp.getCurrentActivity(), OrderDetailActivity.class);
         MAPP.mapp.getCurrentActivity().startActivity(intent);

@@ -8,6 +8,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
+import com.waw.hr.mutils.bean.GoodsBean;
 import com.zh.business.shucang.MAPP;
 import com.zh.business.shucang.R;
 import com.zh.business.shucang.adapter.index.IndexGoodsAdapter;
@@ -17,7 +18,7 @@ import com.zh.business.shucang.utils.IntentUtils;
 
 import java.util.List;
 
-public class ShopCartAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
+public class ShopCartAdapter extends BaseQuickAdapter<GoodsBean, BaseViewHolder> {
 
     private final String TAG = ShopCartAdapter.class.getName();
 
@@ -31,7 +32,7 @@ public class ShopCartAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, String s) {
+    protected void convert(BaseViewHolder helper, GoodsBean goodsBean) {
         ItemShopCartBinding binding = DataBindingUtil.bind(helper.itemView);
 
         binding.getRoot().setOnClickListener((v) -> {

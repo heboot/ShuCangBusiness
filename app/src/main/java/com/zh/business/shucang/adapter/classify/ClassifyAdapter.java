@@ -6,35 +6,39 @@ import androidx.databinding.DataBindingUtil;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.waw.hr.mutils.bean.ClassifyBean;
 import com.zh.business.shucang.adapter.index.IndexGoodsAdapter;
 import com.zh.business.shucang.databinding.ItemClassifyBinding;
 import com.zh.business.shucang.databinding.ItemClassifyTypeBinding;
 import com.zh.business.shucang.databinding.ItemMainHotBinding;
+import com.zh.business.shucang.fragment.ClassifyFragment;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
-public class ClassifyAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
+public class ClassifyAdapter extends BaseQuickAdapter<ClassifyBean.ClassBean, BaseViewHolder> {
 
-    private final String TAG = IndexGoodsAdapter.class.getName();
+    private final String TAG = ClassifyAdapter.class.getName();
 
-    private int imgWidth = 0;
 
     private int checkPosition;
 
-    public ClassifyAdapter(int layoutResId, List data) {
+   private WeakReference<ClassifyFragment> classifyFragment;
+
+    public ClassifyAdapter(int layoutResId, List data, ClassifyFragment classifyFragment) {
         super(layoutResId, data);
-//        imgWidth = QMUIDisplayHelper.getScreenWidth(MAPP.mapp) - MAPP.mapp.getResources().getDimensionPixelOffset(R.dimen.x45);
-//        LogUtil.e(TAG,imgWidth+"");
-        this.imgWidth = imgWidth;
+        this.classifyFragment = new WeakReference<ClassifyFragment>(classifyFragment);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, String s) {
+    protected void convert(BaseViewHolder helper, ClassifyBean.ClassBean s) {
         ItemClassifyBinding binding = DataBindingUtil.bind(helper.itemView);
+        binding.tvTitle.setText(s.getName());
         binding.getRoot().setOnClickListener((v) -> {
             checkPosition = helper.getLayoutPosition();
             binding.getRoot().setBackgroundColor(0xfffffff);
             notifyDataSetChanged();
+            classifyFragment.get().getClassGoodsData(s.getId());
         });
         if (checkPosition == helper.getLayoutPosition()) {
             binding.getRoot().setBackgroundColor(0xfffffff);

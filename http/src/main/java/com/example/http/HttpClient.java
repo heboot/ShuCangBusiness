@@ -2,25 +2,19 @@ package com.example.http;
 
 
 import com.waw.hr.mutils.base.BaseBean;
-import com.waw.hr.mutils.base.BaseBeanEntity;
-import com.waw.hr.mutils.bean.BillListBean;
-import com.waw.hr.mutils.bean.RateModel;
+import com.waw.hr.mutils.bean.ClassifyBean;
+import com.waw.hr.mutils.bean.GoodsDetailBean;
+import com.waw.hr.mutils.bean.IndexBean;
 
 import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
-import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Multipart;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
-import retrofit2.http.PartMap;
 import retrofit2.http.QueryMap;
 
 /**
@@ -73,41 +67,21 @@ public interface HttpClient {
     Observable<BaseBean<Object>> delayRefund(@Header("token") String token,@FieldMap Map<String, Object> params);
 
 
-    @GET("api/allRefund")
-    Observable<BaseBean<Object>> allRefund(@Header("token") String token,@QueryMap Map<String, Object> params);
+    @GET("api/index")
+    Observable<BaseBean<IndexBean>> index();
 
-    @GET("api/refundRecord")
-    Observable<BaseBean<Map>> refundRecord(@Header("token") String token,@QueryMap Map<String, Object> params);
+    @GET("api/classList")
+    Observable<BaseBean<List<ClassifyBean.ClassBean>>> classList();
 
-    @GET("api/myAccount")
-    Observable<BaseBean<Map>> myAccount(@Header("token") String token);
+    @GET("api/classInfo")
+    Observable<BaseBean<ClassifyBean>> classInfo(@QueryMap Map<String, Object> params);
 
-    @GET("api/rateitem")
-    Observable<BaseBean<List<RateModel>>> rateitem(@Header("token") String token);
+    @GET("api/goodsInfo")
+    Observable<BaseBean<GoodsDetailBean>> goodsInfo(@QueryMap Map<String, Object> params);
 
-    @GET("api/myindex")
-    Observable<BaseBean<Map>> myindex(@Header("token") String token);
+    @GET("api/collect")
+    Observable<BaseBean<Object>> collect(@QueryMap Map<String, Object> params);
 
-    @GET("api/subRefund1")
-    Observable<BaseBean<Object>> subRefund1(@Header("token") String token);
-
-    @GET("api/subApply")
-    Observable<BaseBean<Object>> subApply(@Header("token") String token);
-
-    @FormUrlEncoded
-    @POST("api/withdrawDeposit")
-    Observable<BaseBean<Object>> withdrawDeposit(@Header("token") String token,@FieldMap Map<String, Object> params);
-
-    @GET("api/system")
-    Observable<BaseBean<Map>> system();
-
-
-    @Multipart
-    @POST("api/upload")
-    Observable<BaseBean<String>> upload(@Header("token") String token,@Part MultipartBody.Part img);
-
-    @Multipart
-    @POST("api/updateImg")
-    Observable<BaseBean<String>> updateImg(@Header("token") String token,@Part MultipartBody.Part img);
-
+    @GET("api/addCar")
+    Observable<BaseBean<Object>> addCar(@Header("token") String token,@QueryMap Map<String, Object> params);
 }

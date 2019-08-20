@@ -1,0 +1,57 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "gun-bullet-4",
+    "data": {
+      "__id__": 1
+    },
+    "asyncLoadAssets": null
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "gun-bullet-4",
+    "_components": [
+      {
+        "__type__": "cc.Sprite",
+        "node": {
+          "__id__": 1
+        },
+        "_spriteFrame": {
+          "__uuid__": "53Gx039qVBAqTxdcYqsFRz"
+        },
+        "_sizeMode": 0,
+        "_isTrimmedMode": false
+      },
+      {
+        "__type__": "ab01cI3suRDRIN4xiH4a72U",
+        "node": {
+          "__id__": 1
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      },
+      "fileId": "57iWX/065AuLzeArJjMwHL"
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 79,
+      "height": 201
+    },
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": -301,
+      "y": -234
+    }
+  }
+]

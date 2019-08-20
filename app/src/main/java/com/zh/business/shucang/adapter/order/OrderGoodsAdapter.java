@@ -4,13 +4,14 @@ import androidx.databinding.DataBindingUtil;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.waw.hr.mutils.bean.GoodsBean;
 import com.zh.business.shucang.R;
 import com.zh.business.shucang.databinding.ItemGoodsOrderBinding;
 import com.zh.business.shucang.utils.IntentUtils;
 
 import java.util.List;
 
-public class OrderGoodsAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
+public class OrderGoodsAdapter extends BaseQuickAdapter<GoodsBean, BaseViewHolder> {
 
     private final String TAG = OrderGoodsAdapter.class.getName();
 
@@ -19,11 +20,11 @@ public class OrderGoodsAdapter extends BaseQuickAdapter<String, BaseViewHolder> 
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, String s) {
+    protected void convert(BaseViewHolder helper, GoodsBean goodsBean) {
         ItemGoodsOrderBinding binding = DataBindingUtil.bind(helper.itemView);
 
         binding.getRoot().setOnClickListener((v) -> {
-            IntentUtils.toGoodsDetailActivity();
+            IntentUtils.toGoodsDetailActivity(goodsBean.getId());
         });
     }
 

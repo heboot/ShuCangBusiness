@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:background="@mipmap/test_4"
         android:layout_marginLeft="@dimen/x10"
         android:id="@+id/iv_img"
         android:layout_width="@dimen/x52"

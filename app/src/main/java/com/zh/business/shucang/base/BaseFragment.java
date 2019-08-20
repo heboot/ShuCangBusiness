@@ -15,6 +15,7 @@ import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
+import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 import com.waw.hr.mutils.rxbus.RxBus;
 
 import java.util.HashMap;
@@ -47,6 +48,7 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment i
 
     protected int pageSize = 15, sp = 1, total;
 
+    protected QMUITipDialog tipDialog;
 
     protected LayoutInflater inflater;
 
