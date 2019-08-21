@@ -8,11 +8,17 @@
         android:orientation="horizontal">
 
 
-        <include layout="@layout/layout_order_progress_item"></include>
+        <include
+            android:id="@+id/include_progress1"
+            layout="@layout/layout_order_progress_item"></include>
 
-        <include layout="@layout/layout_order_progress_item"></include>
+        <include
+            android:id="@+id/include_progress2"
+            layout="@layout/layout_order_progress_item"></include>
 
-        <include layout="@layout/layout_order_progress_item"></include>
+        <include
+            android:id="@+id/include_progress3"
+            layout="@layout/layout_order_progress_item"></include>
 
 
         <!--<LinearLayout-->

@@ -42,6 +42,38 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
 
+        <View
+            android:id="@+id/v_jian"
+            android:layout_width="@dimen/x18"
+            android:layout_height="@dimen/y18"
+            android:layout_marginTop="@dimen/y11"
+            android:background="@mipmap/icon_shopcart_jian"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_price"></View>
+
+        <View
+            android:id="@+id/v_jia"
+            android:layout_width="@dimen/x18"
+            android:layout_height="@dimen/y18"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginTop="@dimen/y11"
+            android:background="@mipmap/icon_shopcart_add"
+            app:layout_constraintLeft_toRightOf="@+id/tv_num"
+            app:layout_constraintTop_toBottomOf="@+id/tv_price"></View>
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10"
+            android:text="1"
+            android:textColor="#FE5E65"
+            android:textSize="@dimen/x14"
+            app:layout_constraintBottom_toBottomOf="@+id/v_jian"
+            app:layout_constraintLeft_toRightOf="@+id/v_jian"
+            app:layout_constraintTop_toTopOf="@+id/v_jian" />
+
+
         <TextView
             android:textSize="@dimen/x12"
             android:id="@+id/tv_num_tip"

@@ -1,16 +1,12 @@
 package com.zh.business.shucang.fragment;
 
 
-import android.location.Address;
 import android.os.Bundle;
 
 import com.zh.business.shucang.R;
 import com.zh.business.shucang.activity.order.MyOrderActivity;
-import com.zh.business.shucang.activity.user.AddAddressActivity;
-import com.zh.business.shucang.activity.user.AddressListActivity;
 import com.zh.business.shucang.activity.user.CommentActivity;
 import com.zh.business.shucang.activity.user.FavActivity;
-import com.zh.business.shucang.activity.user.HTMLActivity;
 import com.zh.business.shucang.activity.user.InfoActivity;
 import com.zh.business.shucang.activity.user.SettingActivity;
 import com.zh.business.shucang.base.BaseFragment;

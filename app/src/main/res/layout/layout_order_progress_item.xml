@@ -9,6 +9,7 @@
         android:orientation="vertical">
 
         <View
+            android:id="@+id/v_oval"
             android:layout_width="@dimen/x15"
             android:layout_height="@dimen/y15"
             android:background="@drawable/bg_oval_d71b43_border3"></View>

@@ -51,15 +51,14 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <include
+                <com.zh.business.shucang.view.OrderProgressView
                     android:id="@+id/include_progress"
-                    layout="@layout/layout_order_progress"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/y50"
                     android:layout_marginTop="@dimen/y83"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"></include>
+                    app:layout_constraintTop_toTopOf="parent"></com.zh.business.shucang.view.OrderProgressView>
 
                 <View
                     android:id="@+id/v_line1"

@@ -5,6 +5,7 @@ import android.content.Intent;
 import com.waw.hr.mutils.MKey;
 import com.waw.hr.mutils.bean.AddressBean;
 import com.waw.hr.mutils.bean.ImmediatelyBean;
+import com.waw.hr.mutils.bean.OrderSubBean;
 import com.zh.business.shucang.MAPP;
 import com.zh.business.shucang.activity.goods.GoodsDetailActivity;
 import com.zh.business.shucang.activity.goods.GoodsListActivity;
@@ -39,10 +40,19 @@ public class IntentUtils {
         intent = new Intent(MAPP.mapp.getCurrentActivity(), GoodsDetailActivity.class);
         MAPP.mapp.getCurrentActivity().startActivity(intent);
     }
+
     public static void toOrderDetailActivity(OrderDetailType orderDetailType, ImmediatelyBean immediatelyBean){
         intent = new Intent(MAPP.mapp.getCurrentActivity(), OrderDetailActivity.class);
         intent.putExtra(MKey.TYPE,orderDetailType);
+        immediatelyBean.getGoods().setNum(1);
         intent.putExtra(MKey.DATA,immediatelyBean);
+        MAPP.mapp.getCurrentActivity().startActivity(intent);
+    }
+
+    public static void toOrderDetailActivity(OrderDetailType orderDetailType, OrderSubBean orderSubBean){
+        intent = new Intent(MAPP.mapp.getCurrentActivity(), OrderDetailActivity.class);
+        intent.putExtra(MKey.TYPE,orderDetailType);
+        intent.putExtra(MKey.DATA,orderSubBean);
         MAPP.mapp.getCurrentActivity().startActivity(intent);
     }
 

@@ -8,6 +8,7 @@ import com.waw.hr.mutils.bean.GoodsBean;
 import com.waw.hr.mutils.bean.GoodsDetailBean;
 import com.waw.hr.mutils.bean.ImmediatelyBean;
 import com.waw.hr.mutils.bean.IndexBean;
+import com.waw.hr.mutils.bean.OrderSubBean;
 
 import java.util.List;
 import java.util.Map;
@@ -69,6 +70,8 @@ public interface HttpClient {
     Observable<BaseBean<Object>> addressedit(@Header("token") String token,@FieldMap Map<String, Object> params);
 
 
+
+
     @FormUrlEncoded
     @POST("api/addressadd")
     Observable<BaseBean<Object>> addressadd(@Header("token") String token, @FieldMap Map<String, Object> params);
@@ -80,9 +83,18 @@ public interface HttpClient {
     @GET("api/defultaddr")
     Observable<BaseBean<Object>> defultaddr(@Header("token") String token, @QueryMap Map<String, Object> params);
 
+
+    @GET("api/member")
+    Observable<BaseBean<Map>> member(@Header("token") String token);
+
     @GET("api/address")
     Observable<BaseBean<List<AddressBean>>> address(@Header("token") String token);
 
+    @GET("api/cartPay")
+    Observable<BaseBean<Object>> cartPay(@Header("token") String token,@QueryMap Map<String, Object> params);
+
+    @GET("api/orderSub")
+    Observable<BaseBean<OrderSubBean>> orderSub(@Header("token") String token, @QueryMap Map<String, Object> params);
 
     @GET("api/index")
     Observable<BaseBean<IndexBean>> index();
@@ -121,6 +133,5 @@ public interface HttpClient {
 
     @GET("api/addCar")
     Observable<BaseBean<Object>> addCar(@Header("token") String token, @QueryMap Map<String, Object> params);
-
 
 }
