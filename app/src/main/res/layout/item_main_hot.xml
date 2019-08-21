@@ -51,6 +51,14 @@
             app:layout_constraintRight_toRightOf="@+id/v1"
             app:layout_constraintTop_toTopOf="@+id/v1"></View>
 
+        <View
+            android:id="@+id/v_add_cart"
+            android:layout_width="@dimen/x44"
+            android:layout_height="@dimen/y24"
+            app:layout_constraintBottom_toBottomOf="@+id/v1"
+            app:layout_constraintRight_toRightOf="@+id/v1"
+            app:layout_constraintTop_toTopOf="@+id/v1"></View>
+
         <TextView
             android:id="@+id/tv_ziying"
             android:layout_width="@dimen/x25"

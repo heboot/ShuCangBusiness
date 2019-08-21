@@ -1,12 +1,16 @@
 package com.waw.hr.mutils.bean;
 
-public class GoodsBean {
+import java.io.Serializable;
+
+public class GoodsBean implements Serializable {
     private int Id;
     private String name;
     private String cover_image;
     private String price;
     private int inven;
     private int sales;
+
+    private int num;
 
     public int getId() {
         return Id;
@@ -56,4 +60,11 @@ public class GoodsBean {
         this.sales = sales;
     }
 
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
 }

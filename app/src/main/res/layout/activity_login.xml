@@ -147,6 +147,7 @@
             app:layout_constraintTop_toBottomOf="@+id/v_line3" />
 
         <TextView
+            android:id="@+id/tv_login"
             android:layout_width="@dimen/x250"
             android:layout_height="@dimen/y35"
             android:layout_marginTop="@dimen/y83"

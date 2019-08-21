@@ -14,7 +14,7 @@ public class SignUtils {
 
     public static Map<String, Object> getNormalParams() {
         Map<String, Object> params = new HashMap<>();
-        params.put(MKey.ORIGIN, "app_android");
+//        params.put(MKey.ORIGIN, "app_android");
 
 //        if (!StringUtils.isEmpty(UserService.getInstance().getToken())) {
 //            params.put(MKey.TOKEN, UserService.getInstance().getToken());

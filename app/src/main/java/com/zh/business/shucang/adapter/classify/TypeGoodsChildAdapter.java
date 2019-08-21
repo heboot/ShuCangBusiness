@@ -10,6 +10,7 @@ import com.zh.business.shucang.MAPP;
 import com.zh.business.shucang.adapter.index.IndexGoodsAdapter;
 import com.zh.business.shucang.databinding.ItemClassifyGoodsBinding;
 import com.zh.business.shucang.databinding.ItemClassifyTypeBinding;
+import com.zh.business.shucang.service.GoodsService;
 import com.zh.business.shucang.utils.ImageUtils;
 import com.zh.business.shucang.utils.IntentUtils;
 
@@ -18,6 +19,8 @@ import java.util.List;
 public class TypeGoodsChildAdapter extends BaseQuickAdapter<GoodsBean, BaseViewHolder> {
 
     private final String TAG  = TypeGoodsChildAdapter.class.getName();
+
+    private GoodsService goodsService;
 
     public TypeGoodsChildAdapter(int layoutResId, List data) {
         super(layoutResId, data);
@@ -34,6 +37,13 @@ public class TypeGoodsChildAdapter extends BaseQuickAdapter<GoodsBean, BaseViewH
 
         binding.getRoot().setOnClickListener((v)->{
             IntentUtils.toGoodsDetailActivity(goodsBean.getId());
+        });
+
+        binding.vAddCart.setOnClickListener((v)->{
+            if(goodsService == null){
+                goodsService = new GoodsService();
+            }
+            goodsService.addShopCart(String.valueOf(goodsBean.getId()));
         });
     }
 }

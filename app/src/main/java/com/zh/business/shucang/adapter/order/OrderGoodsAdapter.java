@@ -22,7 +22,9 @@ public class OrderGoodsAdapter extends BaseQuickAdapter<GoodsBean, BaseViewHolde
     @Override
     protected void convert(BaseViewHolder helper, GoodsBean goodsBean) {
         ItemGoodsOrderBinding binding = DataBindingUtil.bind(helper.itemView);
-
+        binding.tvNumTip.setText(goodsBean.getNum() == 0?"x1":"x"+goodsBean.getNum());
+        binding.tvPrice.setText(goodsBean.getPrice());
+        binding.tvTitle.setText(goodsBean.getName());
         binding.getRoot().setOnClickListener((v) -> {
             IntentUtils.toGoodsDetailActivity(goodsBean.getId());
         });

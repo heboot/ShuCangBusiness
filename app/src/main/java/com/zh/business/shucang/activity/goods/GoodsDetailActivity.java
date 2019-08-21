@@ -7,8 +7,10 @@ import com.waw.hr.mutils.DialogUtils;
 import com.waw.hr.mutils.MKey;
 import com.waw.hr.mutils.base.BaseBean;
 import com.waw.hr.mutils.bean.GoodsDetailBean;
+import com.waw.hr.mutils.bean.ImmediatelyBean;
 import com.zh.business.shucang.R;
 import com.zh.business.shucang.base.BaseActivity;
+import com.zh.business.shucang.common.OrderDetailType;
 import com.zh.business.shucang.databinding.ActivityGoodsDetailBinding;
 import com.zh.business.shucang.http.HttpObserver;
 import com.zh.business.shucang.service.GoodsService;
@@ -49,7 +51,7 @@ public class GoodsDetailActivity extends BaseActivity<ActivityGoodsDetailBinding
     @Override
     public void initListener() {
         binding.tvBuy.setOnClickListener((v) -> {
-            IntentUtils.toOrderDetailActivity();
+            buy();
         });
         binding.vFav.setOnClickListener((v) -> {
             fav();
@@ -59,6 +61,24 @@ public class GoodsDetailActivity extends BaseActivity<ActivityGoodsDetailBinding
                 goodsService = new GoodsService();
             }
             goodsService.addShopCart(goodsID);
+        });
+    }
+
+
+    private void buy() {
+        params = SignUtils.getNormalParams();
+        params.put(MKey.ID, goodsID);
+        HttpClient.Builder.getServer().immediately(UserService.getInstance().getToken(), params).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<ImmediatelyBean>() {
+            @Override
+            public void onSuccess(BaseBean<ImmediatelyBean> baseBean) {
+                IntentUtils.toOrderDetailActivity(OrderDetailType.BUY, baseBean.getData());
+            }
+
+            @Override
+            public void onError(BaseBean<ImmediatelyBean> baseBean) {
+                tipDialog = DialogUtils.getFailDialog(GoodsDetailActivity.this, baseBean.getMsg(), true);
+                tipDialog.show();
+            }
         });
     }
 

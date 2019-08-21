@@ -38,4 +38,40 @@ public class GoodsService {
         });
     }
 
+    public void removeShopCart(String goodsId) {
+        Map params = SignUtils.getNormalParams();
+        params.put(MKey.ID, goodsId);
+        HttpClient.Builder.getServer().cartItemDel(UserService.getInstance().getToken(), params).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<Object>() {
+            @Override
+            public void onSuccess(BaseBean<Object> baseBean) {
+                tipDialog = DialogUtils.getSuclDialog(MAPP.mapp.getCurrentActivity(), baseBean.getMsg(), true);
+                tipDialog.show();
+            }
+
+            @Override
+            public void onError(BaseBean<Object> baseBean) {
+                tipDialog = DialogUtils.getFailDialog(MAPP.mapp.getCurrentActivity(), baseBean.getMsg(), true);
+                tipDialog.show();
+            }
+        });
+    }
+
+    public void cartItem(String goodsId,int str ) {
+        Map params = SignUtils.getNormalParams();
+        params.put(MKey.ID, goodsId);
+        params.put(MKey.STR, str);
+        HttpClient.Builder.getServer().cartItem(UserService.getInstance().getToken(), params).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<Object>() {
+            @Override
+            public void onSuccess(BaseBean<Object> baseBean) {
+
+            }
+
+            @Override
+            public void onError(BaseBean<Object> baseBean) {
+                tipDialog = DialogUtils.getFailDialog(MAPP.mapp.getCurrentActivity(), baseBean.getMsg(), true);
+                tipDialog.show();
+            }
+        });
+    }
+
 }

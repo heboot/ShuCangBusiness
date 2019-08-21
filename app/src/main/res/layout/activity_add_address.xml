@@ -141,6 +141,7 @@
             app:layout_constraintTop_toBottomOf="@+id/v_line3"></View>
 
         <TextView
+            android:gravity="center_vertical|left"
             android:id="@+id/et_area"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -183,47 +184,47 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v_bg3"></View>
 
-        <View
-            android:id="@+id/v_bg4"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/y45"
-            android:background="#fff"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/v_line4"></View>
+        <!--<View-->
+            <!--android:id="@+id/v_bg4"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="@dimen/y45"-->
+            <!--android:background="#fff"-->
+            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--app:layout_constraintRight_toRightOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/v_line4"></View>-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x17"
-            android:text="街道"
-            android:textColor="#282727"
-            android:textSize="@dimen/x13"
-            app:layout_constraintBottom_toBottomOf="@+id/v_bg4"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/v_bg4" />
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/x17"-->
+            <!--android:text="街道"-->
+            <!--android:textColor="#282727"-->
+            <!--android:textSize="@dimen/x13"-->
+            <!--app:layout_constraintBottom_toBottomOf="@+id/v_bg4"-->
+            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/v_bg4" />-->
 
-        <TextView
-            android:id="@+id/et_street"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginLeft="@dimen/x60"
-            android:background="@null"
-            android:textColor="#222222"
-            android:textSize="@dimen/x14"
-            app:layout_constraintBottom_toBottomOf="@+id/v_bg4"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/v_bg4" />
+        <!--<TextView-->
+            <!--android:id="@+id/et_street"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_marginLeft="@dimen/x60"-->
+            <!--android:background="@null"-->
+            <!--android:textColor="#222222"-->
+            <!--android:textSize="@dimen/x14"-->
+            <!--app:layout_constraintBottom_toBottomOf="@+id/v_bg4"-->
+            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--app:layout_constraintRight_toRightOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/v_bg4" />-->
 
-        <View
-            android:layout_width="@dimen/x12"
-            android:layout_height="@dimen/y13"
-            android:layout_marginRight="@dimen/x16"
-            android:background="@mipmap/icon_arrow_right"
-            app:layout_constraintBottom_toBottomOf="@+id/v_bg4"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/v_bg4"></View>
+        <!--<View-->
+            <!--android:layout_width="@dimen/x12"-->
+            <!--android:layout_height="@dimen/y13"-->
+            <!--android:layout_marginRight="@dimen/x16"-->
+            <!--android:background="@mipmap/icon_arrow_right"-->
+            <!--app:layout_constraintBottom_toBottomOf="@+id/v_bg4"-->
+            <!--app:layout_constraintRight_toRightOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/v_bg4"></View>-->
 
         <View
             android:id="@+id/v_line5"
@@ -232,7 +233,7 @@
             android:background="#e0dede"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/v_bg4"></View>
+            app:layout_constraintTop_toBottomOf="@+id/v_bg3"></View>
 
         <View
             android:id="@+id/v_bg5"
@@ -243,23 +244,15 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v_line5"></View>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x17"
-            android:text="详细地址"
-            android:textColor="#282727"
-            android:textSize="@dimen/x13"
-            app:layout_constraintBottom_toBottomOf="@+id/v_bg5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/v_bg5" />
 
         <EditText
+            android:hint="请输入详细地址/街道/门牌号"
             android:id="@+id/et_detail_addr"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginLeft="@dimen/x60"
             android:background="@null"
+            android:padding="@dimen/x10"
+            android:gravity="left"
             android:textColor="#222222"
             android:textSize="@dimen/x14"
             app:layout_constraintBottom_toBottomOf="@+id/v_bg5"

@@ -102,7 +102,6 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding> {
             binding.cbCheck.setChecked(binding.cbCheck.isChecked() ? false : true);
         });
 
-
         binding.tvCode.setOnClickListener((v) -> {
             sendCode();
         });
@@ -110,7 +109,6 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding> {
         binding.tvSave.setOnClickListener((v)->{
             register();
         });
-
 
     }
 

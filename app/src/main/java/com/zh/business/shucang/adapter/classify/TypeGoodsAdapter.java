@@ -18,15 +18,10 @@ import java.util.List;
 
 public class TypeGoodsAdapter  extends BaseQuickAdapter<ClassifyBean.InfoBean, BaseViewHolder> {
 
-    private final String TAG  = IndexGoodsAdapter.class.getName();
-
-    private int imgWidth = 0 ;
+    private final String TAG  = TypeGoodsAdapter.class.getName();
 
     public TypeGoodsAdapter(int layoutResId, List data) {
         super(layoutResId, data);
-//        imgWidth = QMUIDisplayHelper.getScreenWidth(MAPP.mapp) - MAPP.mapp.getResources().getDimensionPixelOffset(R.dimen.x45);
-//        LogUtil.e(TAG,imgWidth+"");
-        this.imgWidth = imgWidth;
     }
 
     @Override

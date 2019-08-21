@@ -1,19 +1,12 @@
 package com.zh.business.shucang.adapter.index;
 
-import android.view.ViewGroup;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.qmuiteam.qmui.util.QMUIDisplayHelper;
-import com.qmuiteam.qmui.util.QMUIViewHelper;
-import com.waw.hr.mutils.LogUtil;
 import com.waw.hr.mutils.bean.GoodsBean;
-import com.zh.business.shucang.MAPP;
-import com.zh.business.shucang.R;
 import com.zh.business.shucang.databinding.ItemMainHotBinding;
+import com.zh.business.shucang.service.GoodsService;
 import com.zh.business.shucang.utils.ImageUtils;
 import com.zh.business.shucang.utils.IntentUtils;
 
@@ -23,13 +16,10 @@ public class IndexGoodsAdapter  extends BaseQuickAdapter<GoodsBean, BaseViewHold
 
     private final String TAG  = IndexGoodsAdapter.class.getName();
 
-    private int imgWidth = 0 ;
+    private GoodsService goodsService;
 
     public IndexGoodsAdapter(int layoutResId, List data) {
         super(layoutResId, data);
-//        imgWidth = QMUIDisplayHelper.getScreenWidth(MAPP.mapp) - MAPP.mapp.getResources().getDimensionPixelOffset(R.dimen.x45);
-//        LogUtil.e(TAG,imgWidth+"");
-        this.imgWidth = imgWidth;
     }
 
     @Override
@@ -42,6 +32,12 @@ public class IndexGoodsAdapter  extends BaseQuickAdapter<GoodsBean, BaseViewHold
         binding.tvInventory.setText(goodsBean.getInven()+"");
         binding.getRoot().setOnClickListener((v)->{
             IntentUtils.toGoodsDetailActivity(goodsBean.getId());
+        });
+        binding.vAddCart.setOnClickListener((v)->{
+            if(goodsService == null){
+                goodsService = new GoodsService();
+            }
+            goodsService.addShopCart(String.valueOf(goodsBean.getId()));
         });
     }
 }

@@ -69,7 +69,13 @@ public class PayTypesView extends ConstraintLayout {
 
     }
 
-    public PayType getPayType() {
-        return payType;
+    public int getPayType() {
+        switch (payType){
+            case WX:
+                return 2;
+            case ALI:
+                return 1;
+        }
+        return 0;
     }
 }

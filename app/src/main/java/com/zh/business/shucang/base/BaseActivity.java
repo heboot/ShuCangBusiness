@@ -128,6 +128,9 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends FragmentAc
 
             @Override
             public void onNext(Object o) {
+                if(o.equals("logout")){
+                    finish();
+                }
             }
 
             @Override

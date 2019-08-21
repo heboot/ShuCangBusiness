@@ -6,6 +6,7 @@ import com.zh.business.shucang.R;
 import com.zh.business.shucang.activity.login.LoginActivity;
 import com.zh.business.shucang.base.BaseActivity;
 import com.zh.business.shucang.databinding.ActivitySettingBinding;
+import com.zh.business.shucang.service.UserService;
 import com.zh.business.shucang.utils.IntentUtils;
 
 public class SettingActivity extends BaseActivity<ActivitySettingBinding> {
@@ -28,7 +29,9 @@ public class SettingActivity extends BaseActivity<ActivitySettingBinding> {
     @Override
     public void initListener() {
         binding.tvLogout.setOnClickListener((v)->{
-            IntentUtils.doIntent( LoginActivity.class);
+            UserService.getInstance().logout();
+            IntentUtils.doIntent(LoginActivity.class);
+            finish();
         });
         binding.tvAlterPwd.setOnClickListener((v)->{
 

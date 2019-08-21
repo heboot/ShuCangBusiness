@@ -10,6 +10,8 @@ public class MKey {
 
     public static final String PHONE = "phone";
 
+    public static final String ACCOUNT = "account";
+
     public static final String PHONE1 = "phone1";
 
     public static final String PHONE2 = "phone2";
@@ -18,13 +20,30 @@ public class MKey {
 
     public static final String ID_CARD = "id_card";
 
+    public static final String NAME = "name";
+
+    public static final String INFO = "info";
+
     public static final String BANK_CARD = "bank_card";
 
     public static final String ID = "id";
 
+    public static final String MODE = "mode";
+
+    public static final String ADRID = "adrid";
+
+    public static final String STR = "str";
+
+    public static final String NUMBER = "number";
+
+     public static final String TOTAL_PRICE  = "total_price";
+
+
     public static final String BALANCE = "balance";
 
     public static final String TYPE = "type";
+
+    public static final String DATA = "data";
 
     public static final String CODE = "code";
 
@@ -33,6 +52,10 @@ public class MKey {
     public static final String MOBILE = "mobile";
 
     public static final String PASSWORD = "password";
+
+    public static final String NEWPASSWORD = "newpassword";
+
+    public static final String CAPTCHA = "captcha";
 
     public static final String AFFPASSWORD = "affpassword";
 
