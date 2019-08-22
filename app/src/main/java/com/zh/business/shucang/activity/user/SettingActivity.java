@@ -20,6 +20,7 @@ public class SettingActivity extends BaseActivity<ActivitySettingBinding> {
     @Override
     public void initUI() {
         setBackVisibility(View.VISIBLE);
+        
         binding.includeToolbar.tvTitle.setText("设置");
     }
 
