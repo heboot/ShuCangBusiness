@@ -24,7 +24,7 @@ public class DialogUtils {
     private static QMUITipDialog tipDialog;
 
 
-    private static Observable timeObservable = Observable.timer(1500, TimeUnit.MILLISECONDS);
+    private static Observable timeObservable = Observable.timer(1000, TimeUnit.MILLISECONDS);
 
     private static Consumer consumer = (v) -> {
         if (tipDialog != null) {

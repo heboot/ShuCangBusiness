@@ -5,16 +5,16 @@ import java.util.List;
 
 public class OrderSubBean implements Serializable {
 
-    private AddressBean address;
+    private AddressBean adress;
 
     private List<GoodsBean> goods;
 
-    public AddressBean getAddress() {
-        return address;
+    public AddressBean getAdress() {
+        return adress;
     }
 
-    public void setAddress(AddressBean address) {
-        this.address = address;
+    public void setAdress(AddressBean adress) {
+        this.adress = adress;
     }
 
     public List<GoodsBean> getGoods() {

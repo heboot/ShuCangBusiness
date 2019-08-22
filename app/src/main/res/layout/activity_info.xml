@@ -44,7 +44,6 @@
             android:layout_width="@dimen/x37"
             android:layout_height="@dimen/y37"
             android:layout_marginRight="@dimen/x16"
-            android:src="@color/qmui_config_color_red"
             app:layout_constraintBottom_toBottomOf="@+id/v_bg1"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/v_bg1"
@@ -82,15 +81,18 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@+id/v_bg2" />
 
-        <TextView
+        <EditText
             android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginRight="@dimen/x16"
+            android:background="@null"
+            android:gravity="right|center_vertical"
             android:text="用户名"
             android:textColor="#282727"
             android:textSize="@dimen/x13"
             app:layout_constraintBottom_toBottomOf="@+id/v_bg2"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/v_bg2" />
 
@@ -98,49 +100,63 @@
             android:id="@+id/v_line2"
             android:layout_width="0dp"
             android:layout_height="@dimen/y1"
-            android:layout_marginLeft="@dimen/x17"
             android:background="#e0dede"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v_bg2"></View>
 
 
-        <View
-            android:id="@+id/v_bg3"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/y45"
-            android:background="#fff"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/v_line2"></View>
-
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x17"
-            android:text="经销商等级"
-            android:textColor="#282727"
-            android:textSize="@dimen/x13"
-            app:layout_constraintBottom_toBottomOf="@+id/v_bg3"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/v_bg3" />
-
-        <View
-            android:layout_width="@dimen/x12"
-            android:layout_height="@dimen/y13"
-            android:layout_marginRight="@dimen/x16"
-            android:background="@mipmap/icon_arrow_right"
-            app:layout_constraintBottom_toBottomOf="@+id/v_bg3"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/v_bg3"></View>
-
-        <View
-            android:id="@+id/v_line3"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/y1"
-            android:background="#e0dede"
+            android:id="@+id/tv_save"
+            android:layout_width="@dimen/x350"
+            android:layout_height="@dimen/y35"
+            android:layout_marginTop="@dimen/y80"
+            android:background="@drawable/bg_d71b43_5"
+            android:gravity="center"
+            android:text="保存"
+            android:textColor="#fff"
+            android:textSize="@dimen/x12"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/v_bg3"></View>
+            app:layout_constraintTop_toBottomOf="@+id/v_line2" />
+
+
+        <!--<View-->
+        <!--android:id="@+id/v_bg3"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="@dimen/y45"-->
+        <!--android:background="#fff"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/v_line2"></View>-->
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="@dimen/x17"-->
+        <!--android:text="经销商等级"-->
+        <!--android:textColor="#282727"-->
+        <!--android:textSize="@dimen/x13"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/v_bg3"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/v_bg3" />-->
+
+        <!--<View-->
+        <!--android:layout_width="@dimen/x12"-->
+        <!--android:layout_height="@dimen/y13"-->
+        <!--android:layout_marginRight="@dimen/x16"-->
+        <!--android:background="@mipmap/icon_arrow_right"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/v_bg3"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/v_bg3"></View>-->
+
+        <!--<View-->
+        <!--android:id="@+id/v_line3"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="@dimen/y1"-->
+        <!--android:background="#e0dede"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/v_bg3"></View>-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

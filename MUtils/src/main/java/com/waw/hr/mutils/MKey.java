@@ -12,6 +12,8 @@ public class MKey {
 
     public static final String ACCOUNT = "account";
 
+    public static final String NICKNAME = "nickname";
+
     public static final String PHONE1 = "phone1";
 
     public static final String PHONE2 = "phone2";
@@ -32,12 +34,14 @@ public class MKey {
 
     public static final String ADRID = "adrid";
 
+//    public static final String ADDID = "addid";
+
     public static final String STR = "str";
 
     public static final String NUMBER = "number";
 
-     public static final String TOTAL_PRICE  = "total_price";
-
+     public static final String TOTALPRICE  = "totalPrice";
+    public static final String TOTAL_PRICE  = "total_price";
 
     public static final String BALANCE = "balance";
 

@@ -82,5 +82,7 @@ dependencies {
 //    api 'com.daimajia.easing:library:2.0@aar'
 //    api 'com.daimajia.androidanimations:library:2.3@aar'
 
+    api 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3'
+
     api 'io.github.mayubao:pay_library:1.0.1'
 }

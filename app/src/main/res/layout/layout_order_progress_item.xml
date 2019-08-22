@@ -28,7 +28,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/y5"
-            android:text="12:11"
             android:textColor="#D71B43"
             android:textSize="@dimen/x11" />
     </LinearLayout>

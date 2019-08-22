@@ -41,11 +41,10 @@ public class IntentUtils {
         MAPP.mapp.getCurrentActivity().startActivity(intent);
     }
 
-    public static void toOrderDetailActivity(OrderDetailType orderDetailType, ImmediatelyBean immediatelyBean){
+    public static void toOrderDetailActivity(OrderDetailType orderDetailType,String orderId){
         intent = new Intent(MAPP.mapp.getCurrentActivity(), OrderDetailActivity.class);
         intent.putExtra(MKey.TYPE,orderDetailType);
-        immediatelyBean.getGoods().setNum(1);
-        intent.putExtra(MKey.DATA,immediatelyBean);
+        intent.putExtra(MKey.ID,orderId);
         MAPP.mapp.getCurrentActivity().startActivity(intent);
     }
 

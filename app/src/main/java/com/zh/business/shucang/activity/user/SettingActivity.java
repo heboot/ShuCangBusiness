@@ -3,6 +3,8 @@ package com.zh.business.shucang.activity.user;
 import android.view.View;
 
 import com.zh.business.shucang.R;
+import com.zh.business.shucang.activity.common.AboutActivity;
+import com.zh.business.shucang.activity.login.ForgetActivity;
 import com.zh.business.shucang.activity.login.LoginActivity;
 import com.zh.business.shucang.base.BaseActivity;
 import com.zh.business.shucang.databinding.ActivitySettingBinding;
@@ -34,7 +36,10 @@ public class SettingActivity extends BaseActivity<ActivitySettingBinding> {
             finish();
         });
         binding.tvAlterPwd.setOnClickListener((v)->{
-
+            IntentUtils.doIntent(ForgetActivity.class);
+        });
+        binding.tvAbout.setOnClickListener((v)->{
+            IntentUtils.doIntent(AboutActivity.class);
         });
     }
 }

@@ -11,6 +11,7 @@ import com.zh.business.shucang.R;
 import com.zh.business.shucang.activity.order.OrderDetailActivity;
 import com.zh.business.shucang.common.OrderDetailType;
 import com.zh.business.shucang.databinding.ItemGoodsOrderBinding;
+import com.zh.business.shucang.utils.ImageUtils;
 import com.zh.business.shucang.utils.IntentUtils;
 
 import java.lang.ref.WeakReference;
@@ -44,6 +45,7 @@ public class OrderGoodsAdapter extends BaseQuickAdapter<GoodsBean, BaseViewHolde
             binding.tvNum.setVisibility(View.GONE);
         }
 
+        ImageUtils.showImage(goodsBean.getCover_image(),binding.ivImg);
         binding.tvNumTip.setText(goodsBean.getNum() == 0 ? "x1" : "x" + goodsBean.getNum());
         binding.tvPrice.setText(goodsBean.getPrice());
         binding.tvTitle.setText(goodsBean.getName());

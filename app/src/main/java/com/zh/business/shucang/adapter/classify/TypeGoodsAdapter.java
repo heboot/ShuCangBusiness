@@ -29,9 +29,9 @@ public class TypeGoodsAdapter  extends BaseQuickAdapter<ClassifyBean.InfoBean, B
         ItemClassifyTypeBinding binding = DataBindingUtil.bind(helper.itemView);
         binding.tvTitle.setText(s.getTitle());
         binding.rvList.setLayoutManager(new GridLayoutManager(MAPP.mapp,2));
-        binding.tvMore.setOnClickListener((v)->{
-            IntentUtils.toGoodsListActivity();
-        });
+//        binding.tvMore.setOnClickListener((v)->{
+//            IntentUtils.toGoodsListActivity();
+//        });
         TypeGoodsChildAdapter typeGoodsChildAdapter = new TypeGoodsChildAdapter(R.layout.item_classify_goods,s.getGoods());
         binding.rvList.setAdapter(typeGoodsChildAdapter);
 

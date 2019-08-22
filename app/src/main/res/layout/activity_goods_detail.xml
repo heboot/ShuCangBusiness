@@ -134,11 +134,12 @@
 
                 <TextView
                     android:id="@+id/tv_address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/y35"
                     android:layout_marginLeft="@dimen/x21"
                     android:layout_marginTop="@dimen/y25"
                     android:text="成都市锦江区财富中心上普国际写字楼1703"
+                    app:layout_constraintRight_toRightOf="parent"
                     android:textColor="#252525"
                     android:textSize="@dimen/x12"
                     app:layout_constraintLeft_toRightOf="@+id/tv_ziying"
@@ -158,7 +159,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/x10"
-                    android:layout_marginTop="@dimen/y22"
                     android:layout_marginRight="@dimen/x10"
                     android:gravity="center"
                     android:orientation="horizontal"

@@ -46,26 +46,17 @@ public class PayTypesView extends ConstraintLayout {
                 payType = PayType.ALI;
                 binding.cbAlipay.setChecked(true);
                 binding.cbWx.setChecked(false);
-                binding.cbHuodao.setChecked(false);
             } else if (v.getId() == R.id.cb_wx|| v.getId() == R.id.tv_wx) {
                 payType = PayType.WX;
                 binding.cbAlipay.setChecked(false);
                 binding.cbWx.setChecked(true);
-                binding.cbHuodao.setChecked(false);
-            } else if (v.getId() == R.id.cb_huodao|| v.getId() == R.id.tv_huodao) {
-                payType = PayType.HUODAO;
-                binding.cbAlipay.setChecked(false);
-                binding.cbWx.setChecked(false);
-                binding.cbHuodao.setChecked(true);
             }
         };
 
         binding.tvAlipay.setOnClickListener(onClickListener);
         binding.tvWx.setOnClickListener(onClickListener);
-        binding.tvHuodao.setOnClickListener(onClickListener);
         binding.cbAlipay.setOnClickListener(onClickListener);
         binding.cbWx.setOnClickListener(onClickListener);
-        binding.cbHuodao.setOnClickListener(onClickListener);
 
     }
 

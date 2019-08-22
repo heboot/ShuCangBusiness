@@ -44,22 +44,46 @@ public class OrderProgressView extends LinearLayout {
     }
 
 
+    public void setPayTime(String payTime){
+        binding.includeProgress1.tvTime.setText(payTime);
+    }
+
+    public void setEmitTime(String payTime){
+        binding.includeProgress2.tvTime.setText(payTime);
+    }
+
+    public void setSignTime(String payTime){
+        binding.includeProgress3.tvTime.setText(payTime);
+    }
+
     public void setStatus(int status){
         switch (status){
             case 1:
                 binding.includeProgress1.vOval.setBackgroundResource(R.drawable.bg_oval_d71b43_border3);
                 binding.includeProgress2.vOval.setBackgroundResource(R.drawable.bg_oval_d6d6d6_border3);
                 binding.includeProgress3.vOval.setBackgroundResource(R.drawable.bg_oval_d6d6d6_border3);
+
+                binding.includeProgress1.tvStatus.setTextColor(0xffd71b43);
+                binding.includeProgress2.tvStatus.setTextColor(0xffd6d6d6);
+                binding.includeProgress3.tvStatus.setTextColor(0xffd6d6d6);
                 break;
             case 2:
                 binding.includeProgress2.vOval.setBackgroundResource(R.drawable.bg_oval_d71b43_border3);
-                binding.includeProgress1.vOval.setBackgroundResource(R.drawable.bg_oval_d6d6d6_border3);
+                binding.includeProgress1.vOval.setBackgroundResource(R.drawable.bg_oval_d71b43_border3);
                 binding.includeProgress3.vOval.setBackgroundResource(R.drawable.bg_oval_d6d6d6_border3);
+
+                binding.includeProgress2.tvStatus.setTextColor(0xffd71b43);
+                binding.includeProgress1.tvStatus.setTextColor(0xffd71b43);
+                binding.includeProgress3.tvStatus.setTextColor(0xffd6d6d6);
                 break;
             case 3:
                 binding.includeProgress3.vOval.setBackgroundResource(R.drawable.bg_oval_d71b43_border3);
-                binding.includeProgress2.vOval.setBackgroundResource(R.drawable.bg_oval_d6d6d6_border3);
-                binding.includeProgress1.vOval.setBackgroundResource(R.drawable.bg_oval_d6d6d6_border3);
+                binding.includeProgress2.vOval.setBackgroundResource(R.drawable.bg_oval_d71b43_border3);
+                binding.includeProgress1.vOval.setBackgroundResource(R.drawable.bg_oval_d71b43_border3);
+
+                binding.includeProgress3.tvStatus.setTextColor(0xffd71b43);
+                binding.includeProgress1.tvStatus.setTextColor(0xffd71b43);
+                binding.includeProgress2.tvStatus.setTextColor(0xffd71b43);
                 break;
         }
     }

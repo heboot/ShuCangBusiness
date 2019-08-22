@@ -1,5 +1,6 @@
 package com.zh.business.shucang.activity.order;
 
+import android.content.DialogInterface;
 import android.view.View;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,23 +8,30 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.http.HttpClient;
 import com.waw.hr.mutils.DialogUtils;
+import com.waw.hr.mutils.LogUtil;
 import com.waw.hr.mutils.MKey;
+import com.waw.hr.mutils.StringUtils;
 import com.waw.hr.mutils.base.BaseBean;
 import com.waw.hr.mutils.bean.AddressBean;
 import com.waw.hr.mutils.bean.GoodsBean;
 import com.waw.hr.mutils.bean.ImmediatelyBean;
+import com.waw.hr.mutils.bean.OrderInfoBean;
 import com.waw.hr.mutils.bean.OrderSubBean;
 import com.waw.hr.mutils.event.UserEvent;
 import com.waw.hr.mutils.model.ProvinceModel;
 import com.zh.business.shucang.R;
 import com.zh.business.shucang.activity.goods.GoodsDetailActivity;
+import com.zh.business.shucang.activity.user.FavActivity;
 import com.zh.business.shucang.adapter.order.OrderGoodsAdapter;
+import com.zh.business.shucang.adapter.user.FavAdapter;
 import com.zh.business.shucang.base.BaseActivity;
 import com.zh.business.shucang.common.AddressListType;
 import com.zh.business.shucang.common.OrderDetailType;
+import com.zh.business.shucang.common.OrderType;
 import com.zh.business.shucang.databinding.ActivityOrderDetailBinding;
 import com.zh.business.shucang.http.HttpObserver;
 import com.zh.business.shucang.service.UserService;
+import com.zh.business.shucang.utils.ImageUtils;
 import com.zh.business.shucang.utils.IntentUtils;
 import com.zh.business.shucang.utils.SignUtils;
 
@@ -49,11 +57,15 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
 
     private OrderDetailType orderDetailType;
 
-    private ImmediatelyBean immediatelyBean;
-
     private OrderSubBean orderSubBean;
 
     private AddressBean addressBean;
+
+    private OrderInfoBean orderInfoBean;
+
+    private String orderId;
+
+    private double totalPrice;
 
     private int goodsNum = 1;
 
@@ -85,14 +97,13 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
     public void initData() {
         orderDetailType = (OrderDetailType) getIntent().getExtras().get(MKey.TYPE);
         if (orderDetailType == OrderDetailType.BUY) {
-            List<GoodsBean> datas = new ArrayList<>();
-            immediatelyBean = (ImmediatelyBean) getIntent().getExtras().get(MKey.DATA);
-            datas.add(immediatelyBean.getGoods());
-            orderGoodsAdapter = new OrderGoodsAdapter(datas, orderDetailType, new WeakReference<>(this));
+            orderSubBean = (OrderSubBean) getIntent().getExtras().get(MKey.DATA);
+            orderSubBean.getGoods().get(0).setNum(1);
+            orderGoodsAdapter = new OrderGoodsAdapter(orderSubBean.getGoods(), orderDetailType, new WeakReference<>(this));
             binding.rvList.setAdapter(orderGoodsAdapter);
             binding.tvStatusTip.setText("等待付款");
             binding.includeProgress.setStatus(1);
-            addressBean = immediatelyBean.getAddress();
+            addressBean = orderSubBean.getAdress();
             calculateSelectedGoodsPrice(1);
             showAddr();
         } else if (orderDetailType == OrderDetailType.SHOP_CART) {
@@ -101,9 +112,14 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
             binding.rvList.setAdapter(orderGoodsAdapter);
             binding.tvStatusTip.setText("等待付款");
             binding.includeProgress.setStatus(1);
-            addressBean = orderSubBean.getAddress();
+            addressBean = orderSubBean.getAdress();
             calculateSelectedGoodsPrice();
             showAddr();
+        } else if (orderDetailType == OrderDetailType.MY_ORDER) {
+            binding.tvAlterAddress.setEnabled(false);
+            binding.tvAlterAddress.setVisibility(View.GONE);
+            orderId = getIntent().getStringExtra(MKey.ID);
+            orderInfo();
         }
     }
 
@@ -155,23 +171,93 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
         binding.tvPay.setOnClickListener((v) -> {
             if (orderDetailType == OrderDetailType.BUY) {
                 buy();
-            } else {
+            } else if (orderDetailType == OrderDetailType.SHOP_CART) {
                 buyCart();
+            } else if (orderDetailType == OrderDetailType.MY_ORDER) {
+                if (orderInfoBean.getStatus() == OrderType.PROGRESS) {
+                    confirmOrder();
+                } else if (orderInfoBean.getStatus() == OrderType.WAIT) {
+                    buyByOrder();
+                }
+
             }
-
-
         });
     }
 
-    //    total_price	是	int	总价
-//    adrid	是	int	地址id
-//    num	是	int	购买数量
-//    mode 支付方式 1支付宝2微信
+
+    public void confirmOrder() {
+        params = SignUtils.getNormalParams();
+        HttpClient.Builder.getServer().affirmOrder(UserService.getInstance().getToken(), params).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<Object>() {
+            @Override
+            public void onSuccess(BaseBean<Object> baseBean) {
+                tipDialog = DialogUtils.getFailDialog(OrderDetailActivity.this, baseBean.getMsg(), true);
+                tipDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialogInterface) {
+                        finish();
+                    }
+                });
+                tipDialog.show();
+            }
+
+            @Override
+            public void onError(BaseBean<Object> baseBean) {
+                tipDialog = DialogUtils.getFailDialog(OrderDetailActivity.this, baseBean.getMsg(), true);
+                tipDialog.show();
+            }
+        });
+    }
+
+
+    private void buyByOrder() {
+
+        params.put(MKey.ID, orderInfoBean.getId());
+//            params.put(MKey.TOTAL_PRICE, orderSubBean.getGoods().get(0).getPrice());
+//            params.put(MKey.NUM, goodsNum);
+        params.put(MKey.MODE, binding.includePaytype.getPayType());
+//        params.put(MKey.ADRID, addressBean.getId());
+        HttpClient.Builder.getServer().payBtn(UserService.getInstance().getToken(), params).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<Object>() {
+            @Override
+            public void onSuccess(BaseBean<Object> baseBean) {
+                if (binding.includePaytype.getPayType() == 1) {
+                    //3.发送支付宝支付请求
+                    AliPayReq2 aliPayReq = new AliPayReq2.Builder()
+                            .with(OrderDetailActivity.this)//Activity实例
+//                    .setRawAliPayOrderInfo(rawAliOrderInfo)//支付宝支付订单信息
+                            .setSignedAliPayOrderInfo((String) baseBean.getData()) //设置 商户私钥RSA加密后的支付宝支付订单信息
+                            .create()//
+                            .setOnAliPayListener(null);//
+                    PayAPI.getInstance().sendPayRequest(aliPayReq);
+                } else {
+                    //1.创建微信支付请求
+                    WechatPayReq wechatPayReq = new WechatPayReq.Builder()
+                            .with(OrderDetailActivity.this) //activity实例
+                            .setAppId((String) ((Map) baseBean.getData()).get("appId")) //微信支付AppID
+//                            .setPartnerId((String) ((Map)baseBean.getData()).get("nonceStr"))//微信支付商户号
+                            .setPrepayId((String) ((Map) baseBean.getData()).get("package"))//预支付码
+//								.setPackageValue(wechatPayReq.get)//"Sign=WXPay"
+                            .setNonceStr((String) ((Map) baseBean.getData()).get("nonceStr"))
+                            .setTimeStamp((String) ((Map) baseBean.getData()).get("timeStamp"))//时间戳
+                            .setSign((String) ((Map) baseBean.getData()).get("paySign"))//签名
+                            .create();
+                    //2.发送微信支付请求
+                    PayAPI.getInstance().sendPayRequest(wechatPayReq);
+                }
+            }
+
+            @Override
+            public void onError(BaseBean<Object> baseBean) {
+                tipDialog = DialogUtils.getFailDialog(OrderDetailActivity.this, baseBean.getMsg(), true);
+                tipDialog.show();
+            }
+        });
+    }
+
     private void buy() {
         params = SignUtils.getNormalParams();
         if (orderDetailType == OrderDetailType.BUY) {
-            params.put(MKey.ID, immediatelyBean.getGoods().getId());
-            params.put(MKey.TOTAL_PRICE, immediatelyBean.getGoods().getPrice());
+            params.put(MKey.ID, orderSubBean.getGoods().get(0).getId());
+            params.put(MKey.TOTAL_PRICE, orderSubBean.getGoods().get(0).getPrice());
             params.put(MKey.NUM, goodsNum);
 
         }
@@ -219,10 +305,9 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
         for (GoodsBean goodsBean : orderSubBean.getGoods()) {
             ids = ids + goodsBean.getId() + ",";
         }
-
         params = SignUtils.getNormalParams();
         params.put(MKey.ID, ids.substring(0, ids.length() - 1));
-        params.put(MKey.TOTAL_PRICE, totalPrice);
+        params.put(MKey.TOTALPRICE, totalPrice);
         params.put(MKey.MODE, binding.includePaytype.getPayType());
         params.put(MKey.ADRID, addressBean.getId());
         HttpClient.Builder.getServer().cartPay(UserService.getInstance().getToken(), params).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<Object>() {
@@ -232,10 +317,30 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
                     //3.发送支付宝支付请求
                     AliPayReq2 aliPayReq = new AliPayReq2.Builder()
                             .with(OrderDetailActivity.this)//Activity实例
-//                    .setRawAliPayOrderInfo(rawAliOrderInfo)//支付宝支付订单信息
-                            .setSignedAliPayOrderInfo((String) baseBean.getData()) //设置 商户私钥RSA加密后的支付宝支付订单信息
+                            .setRawAliPayOrderInfo((String) baseBean.getData())//支付宝支付订单信息
+//                            .setSignedAliPayOrderInfo((String) baseBean.getData()) //设置 商户私钥RSA加密后的支付宝支付订单信息
                             .create()//
-                            .setOnAliPayListener(null);//
+                            .setOnAliPayListener(new AliPayReq2.OnAliPayListener() {
+                                @Override
+                                public void onPaySuccess(String resultInfo) {
+                                    LogUtil.e(TAG + "onPaySuccess", resultInfo);
+                                }
+
+                                @Override
+                                public void onPayFailure(String resultInfo) {
+                                    LogUtil.e(TAG + "onPayFailure", resultInfo);
+                                }
+
+                                @Override
+                                public void onPayConfirmimg(String resultInfo) {
+                                    LogUtil.e(TAG + "onPayConfirmimg", resultInfo);
+                                }
+
+                                @Override
+                                public void onPayCheck(String status) {
+                                    LogUtil.e(TAG + "onPayCheck", status);
+                                }
+                            });//
                     PayAPI.getInstance().sendPayRequest(aliPayReq);
                 } else {
                     //1.创建微信支付请求
@@ -262,15 +367,99 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
         });
     }
 
-    private double totalPrice;
+    /**
+     * 订单详情
+     */
+    public void orderInfo() {
+        params = SignUtils.getNormalParams();
+        params.put(MKey.ID, orderId);
+        HttpClient.Builder.getServer().orderInfo(UserService.getInstance().getToken(), params).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<OrderInfoBean>() {
+            @Override
+            public void onSuccess(BaseBean<OrderInfoBean> baseBean) {
+                orderInfoBean = baseBean.getData();
+                if (!StringUtils.isEmpty(orderInfoBean.getOrdernum())) {
+                    binding.tvOrderNo.setText("订单编号:" + orderInfoBean.getOrdernum());
+                    binding.tvOrderNo.setVisibility(View.VISIBLE);
+                }
+                if (!StringUtils.isEmpty(orderInfoBean.getPay_time())) {
+                    binding.tvOrderPayTime.setText("付款时间:" + orderInfoBean.getPay_time());
+                    binding.tvOrderPayTime.setVisibility(View.VISIBLE);
+                    binding.includeProgress.setPayTime(orderInfoBean.getPay_time_mm());
+                }
+                if (!StringUtils.isEmpty(orderInfoBean.getEmit_time())) {
+                    binding.tvOrderEmitTime.setText("发货时间:" + orderInfoBean.getEmit_time());
+                    binding.tvOrderEmitTime.setVisibility(View.VISIBLE);
+                    binding.includeProgress.setEmitTime(orderInfoBean.getEmit_time_mm());
+                }
+                if (!StringUtils.isEmpty(orderInfoBean.getSign_time())) {
+                    binding.tvOrderSignTime.setText("签收时间:" + orderInfoBean.getSign_time());
+                    binding.tvOrderSignTime.setVisibility(View.VISIBLE);
+                    binding.includeProgress.setSignTime(orderInfoBean.getSign_time_mm());
+                }
+                orderGoodsAdapter = new OrderGoodsAdapter(baseBean.getData().getDeal(), orderDetailType, new WeakReference(this));
+                binding.rvList.setAdapter(orderGoodsAdapter);
+                switch (baseBean.getData().getStatus()) {
+                    case OrderType
+                            .WAIT:
+                        binding.tvStatusTip.setText("等待付款");
+                        binding.includeProgress.setStatus(1);
+                        break;
+                    case OrderType
+                            .PROGRESS:
+                        binding.includePaytype.setVisibility(View.GONE);
+                        binding.tvStatusTip.setText("配送中");
+                        binding.includeProgress.setStatus(2);
+                        binding.tvPay.setText("确认收货");
+                        break;
+                    case OrderType
+                            .FINISH:
+                        binding.includePaytype.setVisibility(View.GONE);
+                        binding.tvStatusTip.setText("签收完成");
+                        binding.tvPay.setVisibility(View.GONE);
+                        binding.includeProgress.setStatus(3);
+                        break;
+                }
+                addressBean = baseBean.getData().getAddr();
+                calculateOrderGoodsPrice();
+                showAddr();
 
+            }
+
+            @Override
+            public void onError(BaseBean<OrderInfoBean> baseBean) {
+                tipDialog = DialogUtils.getFailDialog(OrderDetailActivity.this, baseBean.getMsg(), true);
+                tipDialog.show();
+            }
+        });
+    }
+
+
+    /**
+     * 计算单独购买的商品价格
+     *
+     * @param num
+     */
     public void calculateSelectedGoodsPrice(int num) {
         goodsNum = num;
         totalPrice = 0;
-        totalPrice = totalPrice + Double.parseDouble(immediatelyBean.getGoods().getPrice()) * num;
+        totalPrice = totalPrice + Double.parseDouble(orderSubBean.getGoods().get(0).getPrice()) * num;
         binding.tvPrice.setText(totalPrice + "");
     }
 
+    /**
+     * 计算我的订单过来的商品价格
+     */
+    public void calculateOrderGoodsPrice() {
+//        totalPrice = 0;
+//        for (GoodsBean goodsBean : orderInfoBean.getDeal()) {
+//            totalPrice = totalPrice + Double.parseDouble(goodsBean.getPrice()) * goodsBean.getNum();
+//        }
+//        binding.tvPrice.setText(totalPrice + "");
+    }
+
+    /**
+     * 计算购物车过来的商品价格
+     */
     public void calculateSelectedGoodsPrice() {
         totalPrice = 0;
         for (GoodsBean goodsBean : orderSubBean.getGoods()) {
@@ -279,6 +468,9 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
         binding.tvPrice.setText(totalPrice + "");
     }
 
+    /**
+     * 显示地址
+     */
     private void showAddr() {
         if (addressBean == null) {
             binding.tvName.setText("请先添加收货地址");

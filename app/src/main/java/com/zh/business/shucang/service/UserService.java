@@ -10,7 +10,6 @@ import com.zh.business.shucang.utils.IntentUtils;
 
 public class UserService {
 
-
     private UserService() {
     }
 
@@ -57,4 +56,5 @@ public class UserService {
         PreferencesUtils.putString(MAPP.mapp, MKey.TOKEN, token);
         this.token = token;
     }
+
 }

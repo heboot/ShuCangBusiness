@@ -9,8 +9,18 @@ public class GoodsBean implements Serializable {
     private String price;
     private int inven;
     private int sales;
+    private int gid;
 
     private int num;
+
+
+    public int getGid() {
+        return gid;
+    }
+
+    public void setGid(int gid) {
+        this.gid = gid;
+    }
 
     public int getId() {
         return Id;

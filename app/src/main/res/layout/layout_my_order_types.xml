@@ -58,6 +58,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -99,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/y9"
-                android:text="退款单"
+                android:text="已签收"
                 android:textColor="#727272"
                 android:textSize="@dimen/x13" />
 

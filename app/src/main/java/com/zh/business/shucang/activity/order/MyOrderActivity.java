@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.zh.business.shucang.R;
 import com.zh.business.shucang.base.BaseActivity;
+import com.zh.business.shucang.common.OrderType;
 import com.zh.business.shucang.databinding.ActivityMyOrdersBinding;
 import com.zh.business.shucang.fragment.OrderFragment;
 
@@ -31,10 +32,10 @@ public class MyOrderActivity extends BaseActivity<ActivityMyOrdersBinding> {
 
     @Override
     public void initData() {
-        fragmentList.add(new OrderFragment());
-        fragmentList.add(new OrderFragment());
-        fragmentList.add(new OrderFragment());
-        fragmentList.add(new OrderFragment());
+        fragmentList.add(OrderFragment.newInstance(OrderType.ALL));
+        fragmentList.add(OrderFragment.newInstance(OrderType.WAIT));
+        fragmentList.add(OrderFragment.newInstance(OrderType.PROGRESS));
+        fragmentList.add(OrderFragment.newInstance(OrderType.FINISH));
         String [] titles = {"全部","待付款","配送中","已完成"};
         binding.tab.setViewPager(binding.vpContainer,titles,this,fragmentList);
 

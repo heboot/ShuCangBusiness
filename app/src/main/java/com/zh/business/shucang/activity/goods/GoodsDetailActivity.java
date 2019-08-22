@@ -6,10 +6,14 @@ import com.example.http.HttpClient;
 import com.waw.hr.mutils.DialogUtils;
 import com.waw.hr.mutils.MKey;
 import com.waw.hr.mutils.base.BaseBean;
+import com.waw.hr.mutils.bean.AddressBean;
 import com.waw.hr.mutils.bean.GoodsDetailBean;
 import com.waw.hr.mutils.bean.ImmediatelyBean;
+import com.waw.hr.mutils.bean.OrderSubBean;
+import com.waw.hr.mutils.event.UserEvent;
 import com.zh.business.shucang.R;
 import com.zh.business.shucang.base.BaseActivity;
+import com.zh.business.shucang.common.AddressListType;
 import com.zh.business.shucang.common.OrderDetailType;
 import com.zh.business.shucang.databinding.ActivityGoodsDetailBinding;
 import com.zh.business.shucang.http.HttpObserver;
@@ -19,7 +23,9 @@ import com.zh.business.shucang.utils.GoodsDetailImageLoader;
 import com.zh.business.shucang.utils.IntentUtils;
 import com.zh.business.shucang.utils.SignUtils;
 
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class GoodsDetailActivity extends BaseActivity<ActivityGoodsDetailBinding> {
@@ -30,6 +36,7 @@ public class GoodsDetailActivity extends BaseActivity<ActivityGoodsDetailBinding
 
     private GoodsService goodsService;
 
+    private AddressBean addressBean;
 
     @Override
     protected int getLayoutId() {
@@ -50,17 +57,60 @@ public class GoodsDetailActivity extends BaseActivity<ActivityGoodsDetailBinding
 
     @Override
     public void initListener() {
+        rxObservable.subscribe(new Observer<Object>() {
+
+            private Disposable disposable;
+
+            @Override
+            public void onSubscribe(Disposable d) {
+                addDisposable(d);
+                this.disposable = d;
+            }
+
+            @Override
+            public void onNext(Object o) {
+                if (o instanceof UserEvent.ChooseAddressEvent) {
+                    addressBean = ((UserEvent.ChooseAddressEvent) o).getAddressBean();
+                    binding.tvAddress.setText(addressBean.getAddress() + addressBean.getInfo());
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
         binding.tvBuy.setOnClickListener((v) -> {
+            if(!UserService.getInstance().isLogin()){
+                return;
+            }
             buy();
         });
         binding.vFav.setOnClickListener((v) -> {
+            if(!UserService.getInstance().isLogin()){
+                return;
+            }
             fav();
         });
         binding.vShopcart.setOnClickListener((v) -> {
+            if(!UserService.getInstance().isLogin()){
+                return;
+            }
             if (goodsService == null) {
                 goodsService = new GoodsService();
             }
             goodsService.addShopCart(goodsID);
+        });
+        binding.tvAddress.setOnClickListener((v)->{
+            if(!UserService.getInstance().isLogin()){
+                return;
+            }
+            IntentUtils.toAddressListActivity(AddressListType.CHOOSE);
         });
     }
 
@@ -68,14 +118,14 @@ public class GoodsDetailActivity extends BaseActivity<ActivityGoodsDetailBinding
     private void buy() {
         params = SignUtils.getNormalParams();
         params.put(MKey.ID, goodsID);
-        HttpClient.Builder.getServer().immediately(UserService.getInstance().getToken(), params).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<ImmediatelyBean>() {
+        HttpClient.Builder.getServer().immediately(UserService.getInstance().getToken(), params).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<OrderSubBean>() {
             @Override
-            public void onSuccess(BaseBean<ImmediatelyBean> baseBean) {
+            public void onSuccess(BaseBean<OrderSubBean> baseBean) {
                 IntentUtils.toOrderDetailActivity(OrderDetailType.BUY, baseBean.getData());
             }
 
             @Override
-            public void onError(BaseBean<ImmediatelyBean> baseBean) {
+            public void onError(BaseBean<OrderSubBean> baseBean) {
                 tipDialog = DialogUtils.getFailDialog(GoodsDetailActivity.this, baseBean.getMsg(), true);
                 tipDialog.show();
             }
@@ -86,7 +136,7 @@ public class GoodsDetailActivity extends BaseActivity<ActivityGoodsDetailBinding
     private void getDetailData() {
         params = SignUtils.getNormalParams();
         params.put(MKey.ID, goodsID);
-        HttpClient.Builder.getServer().goodsInfo(params).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<GoodsDetailBean>() {
+        HttpClient.Builder.getServer().goodsInfo(UserService.getInstance().getToken(),params).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<GoodsDetailBean>() {
             @Override
             public void onSuccess(BaseBean<GoodsDetailBean> baseBean) {
                 goodsDetailBean = baseBean.getData();
@@ -148,7 +198,15 @@ public class GoodsDetailActivity extends BaseActivity<ActivityGoodsDetailBinding
 
         if (!UserService.getInstance().isLoginValue()) {
             binding.tvAddress.setText("请添加收货地址");
+        }else{
+            if(goodsDetailBean.getAddress() == null){
+                binding.tvAddress.setText("请添加收货地址");
+            }else{
+                binding.tvAddress.setText(goodsDetailBean.getAddress());
+            }
         }
+
+
     }
 
 }

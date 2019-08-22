@@ -56,7 +56,7 @@ public class ShopCartAdapter extends BaseQuickAdapter<GoodsBean, BaseViewHolder>
         binding.tvNumTip.setText("x" + String.valueOf(goodsBean.getNum()));
         binding.tvNum.setText(String.valueOf(goodsBean.getNum()));
         binding.getRoot().setOnClickListener((v) -> {
-            IntentUtils.toGoodsDetailActivity(goodsBean.getId());
+            IntentUtils.toGoodsDetailActivity(goodsBean.getGid());
         });
 
         binding.vJia.setOnClickListener((v) -> {
