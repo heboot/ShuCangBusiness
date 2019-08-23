@@ -67,7 +67,7 @@ public class InfoActivity extends BaseActivity<ActivityInfoBinding> {
             editnick();
         });
 
-        binding.ivAvatar.setOnClickListener((v) -> {
+        binding.vBg1.setOnClickListener((v) -> {
             if (UserService.getInstance().isLogin()) {
                 if (chooseAvatarSheet == null) {
                     chooseAvatarSheet = DialogUtils.getAvatarBottomSheet(InfoActivity.this, new QMUIBottomSheet.BottomListSheetBuilder.OnSheetItemClickListener() {
@@ -95,10 +95,7 @@ public class InfoActivity extends BaseActivity<ActivityInfoBinding> {
                 chooseAvatarSheet.show();
             }
         });
-
     }
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -151,9 +148,9 @@ public class InfoActivity extends BaseActivity<ActivityInfoBinding> {
     public void editnick() {
         params = SignUtils.getNormalParams();
         params.put(MKey.NICKNAME,binding.tvName.getText().toString());
-        HttpClient.Builder.getServer().editName(UserService.getInstance().getToken(),params).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<Map>() {
+        HttpClient.Builder.getServer().editName(UserService.getInstance().getToken(),params).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<String>() {
             @Override
-            public void onSuccess(BaseBean<Map> baseBean) {
+            public void onSuccess(BaseBean<String> baseBean) {
 //                binding.tvName.setText((String) baseBean.getData().get("nickname"));
 //                ImageUtils.showImage((String) baseBean.getData().get("avatar"), binding.ivAvatar);
                 tipDialog = DialogUtils.getSuclDialog(InfoActivity.this, baseBean.getMsg(), true);
@@ -167,7 +164,7 @@ public class InfoActivity extends BaseActivity<ActivityInfoBinding> {
             }
 
             @Override
-            public void onError(BaseBean<Map> baseBean) {
+            public void onError(BaseBean<String> baseBean) {
                 tipDialog = DialogUtils.getFailDialog(InfoActivity.this, baseBean.getMsg(), true);
                 tipDialog.show();
             }

@@ -104,7 +104,7 @@ public interface HttpClient {
     Observable<BaseBean<String>> info();
 
     @GET("api/editName")
-    Observable<BaseBean<Map>> editName(@Header("token") String token,@QueryMap Map<String, Object> params);
+    Observable<BaseBean<String>> editName(@Header("token") String token,@QueryMap Map<String, Object> params);
 
     @GET("api/affirmOrder")
     Observable<BaseBean<Object>> affirmOrder(@Header("token") String token,@QueryMap Map<String, Object> params);

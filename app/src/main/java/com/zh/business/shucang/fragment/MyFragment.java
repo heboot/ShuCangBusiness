@@ -4,6 +4,7 @@ package com.zh.business.shucang.fragment;
 import android.os.Bundle;
 
 import com.example.http.HttpClient;
+import com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIPullRefreshLayout;
 import com.waw.hr.mutils.DialogUtils;
 import com.waw.hr.mutils.MKey;
 import com.waw.hr.mutils.base.BaseBean;
@@ -83,12 +84,13 @@ public class MyFragment extends BaseFragment<FragmentMyBinding> {
         HttpClient.Builder.getServer().member(UserService.getInstance().getToken()).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<Map>() {
             @Override
             public void onSuccess(BaseBean<Map> baseBean) {
+                binding.mrv.finishRefresh();
                 binding.tvName.setText((String) baseBean.getData().get("nickname"));
                 ImageUtils.showImage((String) baseBean.getData().get("avatar"),binding.ivAvatar);
             }
 
             @Override
-            public void onError(BaseBean<Map> baseBean) {
+            public void onError(BaseBean<Map> baseBean) {  binding.mrv.finishRefresh();
                 tipDialog = DialogUtils.getFailDialog(_mActivity, baseBean.getMsg(), true);
                 tipDialog.show();
             }
@@ -98,6 +100,22 @@ public class MyFragment extends BaseFragment<FragmentMyBinding> {
 
     @Override
     public void initListener() {
+        binding.mrv.setOnPullListener(new QMUIPullRefreshLayout.OnPullListener() {
+            @Override
+            public void onMoveTarget(int offset) {
+
+            }
+
+            @Override
+            public void onMoveRefreshView(int offset) {
+
+            }
+
+            @Override
+            public void onRefresh() {
+                member();
+            }
+        });
         binding.ivAvatarBg.setOnClickListener((v) -> {
             IntentUtils.doIntent(InfoActivity.class);
         });

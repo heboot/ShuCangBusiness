@@ -205,7 +205,7 @@
             android:layout_height="0dp"
             android:layout_marginLeft="@dimen/x43"
             android:gravity="left|center_vertical"
-            android:text="关于蜀仓"
+            android:text="关于我们"
             android:textColor="#232323"
             android:textSize="@dimen/x14"
             app:layout_constraintBottom_toTopOf="@+id/v5"

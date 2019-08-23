@@ -27,6 +27,7 @@ import com.zh.business.shucang.databinding.HeadIndexBinding;
 import com.zh.business.shucang.http.HttpObserver;
 import com.zh.business.shucang.utils.BannerImageLoader;
 import com.zh.business.shucang.utils.ImageUtils;
+import com.zh.business.shucang.utils.IntentUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +68,7 @@ public class IndexFragment extends BaseFragment<ActivityIndexBinding> {
     public void initUI() {
         binding.rvList.setLayoutManager(new GridLayoutManager(_mActivity, 2));
 //        binding.rvList.addItemDecoration(new IndexGridItemDecoration(MAPP.mapp));
-        binding.includeToolbar.tvTitle.setText("蜀仓建材");
+        binding.includeToolbar.tvTitle.setText("首页");
     }
 
     @Override
@@ -177,6 +178,8 @@ public class IndexFragment extends BaseFragment<ActivityIndexBinding> {
         }
 
         ImageUtils.showImage(classLargeList.get(0).getAd_image(), binding.includeNew.includeNew1.iv1);
+
+
         ImageUtils.showImage(classSmallList.get(0).getAd_image(), binding.includeNew.includeNew1.iv2);
         ImageUtils.showImage(classSmallList.get(1).getAd_image(), binding.includeNew.includeNew1.iv3);
         ImageUtils.showImage(classSmallList.get(2).getAd_image(), binding.includeNew.includeNew1.iv4);

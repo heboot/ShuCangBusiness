@@ -8,19 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.waw.hr.mutils.bean.GoodsBean;
-import com.waw.hr.mutils.bean.GoodsDetailBean;
 import com.waw.hr.mutils.bean.OrderListBean;
 import com.zh.business.shucang.MAPP;
 import com.zh.business.shucang.R;
-import com.zh.business.shucang.activity.order.MyOrderActivity;
-import com.zh.business.shucang.adapter.shopcart.ShopCartAdapter;
 import com.zh.business.shucang.common.OrderDetailType;
 import com.zh.business.shucang.common.OrderType;
-import com.zh.business.shucang.databinding.ItemFavBinding;
 import com.zh.business.shucang.databinding.ItemOrderBinding;
 import com.zh.business.shucang.fragment.OrderFragment;
-import com.zh.business.shucang.utils.ImageUtils;
 import com.zh.business.shucang.utils.IntentUtils;
 
 import java.lang.ref.WeakReference;
@@ -71,6 +65,9 @@ public class OrderAdapter extends BaseQuickAdapter<OrderListBean, BaseViewHolder
         binding.rvList.setAdapter(new OrderItemAdapter(goodsBean.getDeal()));
 
 
+        binding.rvList.setOnClickListener((v)->{
+            IntentUtils.toOrderDetailActivity(OrderDetailType.MY_ORDER,goodsBean.getId());
+        });
         binding.getRoot().setOnClickListener((v)->{
             IntentUtils.toOrderDetailActivity(OrderDetailType.MY_ORDER,goodsBean.getId());
         });

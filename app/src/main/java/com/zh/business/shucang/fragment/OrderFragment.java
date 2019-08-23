@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.http.HttpClient;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
+import com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIPullRefreshLayout;
 import com.waw.hr.mutils.DialogUtils;
 import com.waw.hr.mutils.MKey;
 import com.waw.hr.mutils.base.BaseBean;
@@ -65,7 +66,22 @@ public class OrderFragment extends BaseFragment<FragmentMyOrderBinding> {
 
     @Override
     public void initListener() {
+        binding.mrv.setOnPullListener(new QMUIPullRefreshLayout.OnPullListener() {
+            @Override
+            public void onMoveTarget(int offset) {
 
+            }
+
+            @Override
+            public void onMoveRefreshView(int offset) {
+
+            }
+
+            @Override
+            public void onRefresh() {
+                getData();
+            }
+        });
     }
 
     public void showCancelDialog(String orderId) {
@@ -79,12 +95,12 @@ public class OrderFragment extends BaseFragment<FragmentMyOrderBinding> {
                         }
                     })
                     .addAction("确定", new QMUIDialogAction.ActionListener() {
-                                @Override
-                                public void onClick(QMUIDialog dialog, int index) {
-                                    qmuiDialog.dismiss();
-                                    cancel(orderId);
-                                }
-                            })
+                        @Override
+                        public void onClick(QMUIDialog dialog, int index) {
+                            qmuiDialog.dismiss();
+                            cancel(orderId);
+                        }
+                    })
                     .create();
         }
         qmuiDialog.show();
@@ -117,7 +133,7 @@ public class OrderFragment extends BaseFragment<FragmentMyOrderBinding> {
         params.put(MKey.TYPE, type);
         HttpClient.Builder.getServer().myOrder(UserService.getInstance().getToken(), params).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<List<OrderListBean>>() {
             @Override
-            public void onSuccess(BaseBean<List<OrderListBean>> baseBean) {
+            public void onSuccess(BaseBean<List<OrderListBean>> baseBean) {  binding.mrv.finishRefresh();
                 if (orderAdapter == null) {
                     orderAdapter = new OrderAdapter(baseBean.getData(), new WeakReference<>(OrderFragment.this));
                     binding.rvList.setAdapter(orderAdapter);
@@ -130,7 +146,7 @@ public class OrderFragment extends BaseFragment<FragmentMyOrderBinding> {
             }
 
             @Override
-            public void onError(BaseBean<List<OrderListBean>> baseBean) {
+            public void onError(BaseBean<List<OrderListBean>> baseBean) {  binding.mrv.finishRefresh();
                 tipDialog = DialogUtils.getFailDialog(_mActivity, baseBean.getMsg(), true);
                 tipDialog.show();
             }

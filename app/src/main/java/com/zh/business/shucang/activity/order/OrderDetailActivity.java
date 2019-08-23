@@ -1,11 +1,16 @@
 package com.zh.business.shucang.activity.order;
 
 import android.content.DialogInterface;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alibaba.fastjson.JSON;
 import com.example.http.HttpClient;
 import com.waw.hr.mutils.DialogUtils;
 import com.waw.hr.mutils.LogUtil;
@@ -14,16 +19,11 @@ import com.waw.hr.mutils.StringUtils;
 import com.waw.hr.mutils.base.BaseBean;
 import com.waw.hr.mutils.bean.AddressBean;
 import com.waw.hr.mutils.bean.GoodsBean;
-import com.waw.hr.mutils.bean.ImmediatelyBean;
 import com.waw.hr.mutils.bean.OrderInfoBean;
 import com.waw.hr.mutils.bean.OrderSubBean;
 import com.waw.hr.mutils.event.UserEvent;
-import com.waw.hr.mutils.model.ProvinceModel;
 import com.zh.business.shucang.R;
-import com.zh.business.shucang.activity.goods.GoodsDetailActivity;
-import com.zh.business.shucang.activity.user.FavActivity;
 import com.zh.business.shucang.adapter.order.OrderGoodsAdapter;
-import com.zh.business.shucang.adapter.user.FavAdapter;
 import com.zh.business.shucang.base.BaseActivity;
 import com.zh.business.shucang.common.AddressListType;
 import com.zh.business.shucang.common.OrderDetailType;
@@ -31,19 +31,13 @@ import com.zh.business.shucang.common.OrderType;
 import com.zh.business.shucang.databinding.ActivityOrderDetailBinding;
 import com.zh.business.shucang.http.HttpObserver;
 import com.zh.business.shucang.service.UserService;
-import com.zh.business.shucang.utils.ImageUtils;
 import com.zh.business.shucang.utils.IntentUtils;
+import com.zh.business.shucang.utils.PayUtils;
 import com.zh.business.shucang.utils.SignUtils;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
-import io.github.mayubao.pay_library.AliPayReq;
-import io.github.mayubao.pay_library.AliPayReq2;
-import io.github.mayubao.pay_library.PayAPI;
-import io.github.mayubao.pay_library.WechatPayReq;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -68,6 +62,9 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
     private double totalPrice;
 
     private int goodsNum = 1;
+
+    private Handler aliPayObserver;
+
 
     @Override
     protected int getLayoutId() {
@@ -95,6 +92,37 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
 
     @Override
     public void initData() {
+
+        aliPayObserver = new Handler() {
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                if (msg.what == 555) {
+                    Map<String, String> map = (Map) msg.obj;
+                    // 判断resultStatus 为9000则代表支付成功
+                    if (TextUtils.equals(map.get("resultStatus"), "9000")) {
+//                        该笔订单是否真实支付成功，需要依赖服务端的异步通知。
+                        tipDialog = DialogUtils.getSuclDialog(OrderDetailActivity.this, "支付成功", true);
+                        tipDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                            @Override
+                            public void onDismiss(DialogInterface dialogInterface) {
+                                finish();
+                            }
+                        });
+                        tipDialog.show();
+                    } else if (TextUtils.equals(map.get("resultStatus"), "6001")) {
+//                        该笔订单是否真实支付成功，需要依赖服务端的异步通知。
+                        tipDialog = DialogUtils.getInfolDialog(OrderDetailActivity.this, "支付取消", true);
+                        tipDialog.show();
+                    } else {
+//                         该笔订单是否真实支付成功，需要依赖服务端的异步通知。
+                        tipDialog = DialogUtils.getFailDialog(OrderDetailActivity.this, "支付失败", true);
+                        tipDialog.show();
+                    }
+                }
+            }
+        };
+
+
         orderDetailType = (OrderDetailType) getIntent().getExtras().get(MKey.TYPE);
         if (orderDetailType == OrderDetailType.BUY) {
             orderSubBean = (OrderSubBean) getIntent().getExtras().get(MKey.DATA);
@@ -208,6 +236,9 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
         });
     }
 
+    private void aliPay(String orderInfo) {
+        PayUtils.getInstance().aliPay(orderInfo, aliPayObserver);
+    }
 
     private void buyByOrder() {
 
@@ -220,28 +251,22 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
             @Override
             public void onSuccess(BaseBean<Object> baseBean) {
                 if (binding.includePaytype.getPayType() == 1) {
-                    //3.发送支付宝支付请求
-                    AliPayReq2 aliPayReq = new AliPayReq2.Builder()
-                            .with(OrderDetailActivity.this)//Activity实例
-//                    .setRawAliPayOrderInfo(rawAliOrderInfo)//支付宝支付订单信息
-                            .setSignedAliPayOrderInfo((String) baseBean.getData()) //设置 商户私钥RSA加密后的支付宝支付订单信息
-                            .create()//
-                            .setOnAliPayListener(null);//
-                    PayAPI.getInstance().sendPayRequest(aliPayReq);
+                    aliPay((String) baseBean.getData());
+
                 } else {
-                    //1.创建微信支付请求
-                    WechatPayReq wechatPayReq = new WechatPayReq.Builder()
-                            .with(OrderDetailActivity.this) //activity实例
-                            .setAppId((String) ((Map) baseBean.getData()).get("appId")) //微信支付AppID
-//                            .setPartnerId((String) ((Map)baseBean.getData()).get("nonceStr"))//微信支付商户号
-                            .setPrepayId((String) ((Map) baseBean.getData()).get("package"))//预支付码
-//								.setPackageValue(wechatPayReq.get)//"Sign=WXPay"
-                            .setNonceStr((String) ((Map) baseBean.getData()).get("nonceStr"))
-                            .setTimeStamp((String) ((Map) baseBean.getData()).get("timeStamp"))//时间戳
-                            .setSign((String) ((Map) baseBean.getData()).get("paySign"))//签名
-                            .create();
-                    //2.发送微信支付请求
-                    PayAPI.getInstance().sendPayRequest(wechatPayReq);
+//                    //1.创建微信支付请求
+//                    WechatPayReq wechatPayReq = new WechatPayReq.Builder()
+//                            .with(OrderDetailActivity.this) //activity实例
+//                            .setAppId((String) ((Map) baseBean.getData()).get("appId")) //微信支付AppID
+////                            .setPartnerId((String) ((Map)baseBean.getData()).get("nonceStr"))//微信支付商户号
+//                            .setPrepayId((String) ((Map) baseBean.getData()).get("package"))//预支付码
+////								.setPackageValue(wechatPayReq.get)//"Sign=WXPay"
+//                            .setNonceStr((String) ((Map) baseBean.getData()).get("nonceStr"))
+//                            .setTimeStamp((String) ((Map) baseBean.getData()).get("timeStamp"))//时间戳
+//                            .setSign((String) ((Map) baseBean.getData()).get("paySign"))//签名
+//                            .create();
+//                    //2.发送微信支付请求
+//                    PayAPI.getInstance().sendPayRequest(wechatPayReq);
                 }
             }
 
@@ -267,28 +292,21 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
             @Override
             public void onSuccess(BaseBean<Object> baseBean) {
                 if (binding.includePaytype.getPayType() == 1) {
-                    //3.发送支付宝支付请求
-                    AliPayReq2 aliPayReq = new AliPayReq2.Builder()
-                            .with(OrderDetailActivity.this)//Activity实例
-//                    .setRawAliPayOrderInfo(rawAliOrderInfo)//支付宝支付订单信息
-                            .setSignedAliPayOrderInfo((String) baseBean.getData()) //设置 商户私钥RSA加密后的支付宝支付订单信息
-                            .create()//
-                            .setOnAliPayListener(null);//
-                    PayAPI.getInstance().sendPayRequest(aliPayReq);
+                    aliPay((String) baseBean.getData());
                 } else {
-                    //1.创建微信支付请求
-                    WechatPayReq wechatPayReq = new WechatPayReq.Builder()
-                            .with(OrderDetailActivity.this) //activity实例
-                            .setAppId((String) ((Map) baseBean.getData()).get("appId")) //微信支付AppID
-//                            .setPartnerId((String) ((Map)baseBean.getData()).get("nonceStr"))//微信支付商户号
-                            .setPrepayId((String) ((Map) baseBean.getData()).get("package"))//预支付码
-//								.setPackageValue(wechatPayReq.get)//"Sign=WXPay"
-                            .setNonceStr((String) ((Map) baseBean.getData()).get("nonceStr"))
-                            .setTimeStamp((String) ((Map) baseBean.getData()).get("timeStamp"))//时间戳
-                            .setSign((String) ((Map) baseBean.getData()).get("paySign"))//签名
-                            .create();
-                    //2.发送微信支付请求
-                    PayAPI.getInstance().sendPayRequest(wechatPayReq);
+//                    //1.创建微信支付请求
+//                    WechatPayReq wechatPayReq = new WechatPayReq.Builder()
+//                            .with(OrderDetailActivity.this) //activity实例
+//                            .setAppId((String) ((Map) baseBean.getData()).get("appId")) //微信支付AppID
+////                            .setPartnerId((String) ((Map)baseBean.getData()).get("nonceStr"))//微信支付商户号
+//                            .setPrepayId((String) ((Map) baseBean.getData()).get("package"))//预支付码
+////								.setPackageValue(wechatPayReq.get)//"Sign=WXPay"
+//                            .setNonceStr((String) ((Map) baseBean.getData()).get("nonceStr"))
+//                            .setTimeStamp((String) ((Map) baseBean.getData()).get("timeStamp"))//时间戳
+//                            .setSign((String) ((Map) baseBean.getData()).get("paySign"))//签名
+//                            .create();
+//                    //2.发送微信支付请求
+//                    PayAPI.getInstance().sendPayRequest(wechatPayReq);
                 }
             }
 
@@ -314,48 +332,21 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
             @Override
             public void onSuccess(BaseBean<Object> baseBean) {
                 if (binding.includePaytype.getPayType() == 1) {
-                    //3.发送支付宝支付请求
-                    AliPayReq2 aliPayReq = new AliPayReq2.Builder()
-                            .with(OrderDetailActivity.this)//Activity实例
-                            .setRawAliPayOrderInfo((String) baseBean.getData())//支付宝支付订单信息
-//                            .setSignedAliPayOrderInfo((String) baseBean.getData()) //设置 商户私钥RSA加密后的支付宝支付订单信息
-                            .create()//
-                            .setOnAliPayListener(new AliPayReq2.OnAliPayListener() {
-                                @Override
-                                public void onPaySuccess(String resultInfo) {
-                                    LogUtil.e(TAG + "onPaySuccess", resultInfo);
-                                }
-
-                                @Override
-                                public void onPayFailure(String resultInfo) {
-                                    LogUtil.e(TAG + "onPayFailure", resultInfo);
-                                }
-
-                                @Override
-                                public void onPayConfirmimg(String resultInfo) {
-                                    LogUtil.e(TAG + "onPayConfirmimg", resultInfo);
-                                }
-
-                                @Override
-                                public void onPayCheck(String status) {
-                                    LogUtil.e(TAG + "onPayCheck", status);
-                                }
-                            });//
-                    PayAPI.getInstance().sendPayRequest(aliPayReq);
+                    aliPay((String) baseBean.getData());
                 } else {
-                    //1.创建微信支付请求
-                    WechatPayReq wechatPayReq = new WechatPayReq.Builder()
-                            .with(OrderDetailActivity.this) //activity实例
-                            .setAppId((String) ((Map) baseBean.getData()).get("appId")) //微信支付AppID
-//                            .setPartnerId((String) ((Map)baseBean.getData()).get("nonceStr"))//微信支付商户号
-                            .setPrepayId((String) ((Map) baseBean.getData()).get("package"))//预支付码
-//								.setPackageValue(wechatPayReq.get)//"Sign=WXPay"
-                            .setNonceStr((String) ((Map) baseBean.getData()).get("nonceStr"))
-                            .setTimeStamp((String) ((Map) baseBean.getData()).get("timeStamp"))//时间戳
-                            .setSign((String) ((Map) baseBean.getData()).get("paySign"))//签名
-                            .create();
-                    //2.发送微信支付请求
-                    PayAPI.getInstance().sendPayRequest(wechatPayReq);
+//                    //1.创建微信支付请求
+//                    WechatPayReq wechatPayReq = new WechatPayReq.Builder()
+//                            .with(OrderDetailActivity.this) //activity实例
+//                            .setAppId((String) ((Map) baseBean.getData()).get("appId")) //微信支付AppID
+////                            .setPartnerId((String) ((Map)baseBean.getData()).get("nonceStr"))//微信支付商户号
+//                            .setPrepayId((String) ((Map) baseBean.getData()).get("package"))//预支付码
+////								.setPackageValue(wechatPayReq.get)//"Sign=WXPay"
+//                            .setNonceStr((String) ((Map) baseBean.getData()).get("nonceStr"))
+//                            .setTimeStamp((String) ((Map) baseBean.getData()).get("timeStamp"))//时间戳
+//                            .setSign((String) ((Map) baseBean.getData()).get("paySign"))//签名
+//                            .create();
+//                    //2.发送微信支付请求
+//                    PayAPI.getInstance().sendPayRequest(wechatPayReq);
                 }
             }
 

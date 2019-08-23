@@ -8,9 +8,9 @@
         android:gravity="center"
         android:layout_height="@dimen/y70">
 
-        <ProgressBar
+        <ImageView
+            android:background="@mipmap/icon_zh"
             android:id="@+id/pb"
-            android:indeterminateTint="#232324"
             android:layout_width="@dimen/x20"
             android:layout_height="@dimen/y20" />
 

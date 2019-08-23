@@ -1,5 +1,7 @@
 package com.zh.business.shucang.activity.common;
 
+import android.view.View;
+
 import com.example.http.HttpClient;
 import com.waw.hr.mutils.DialogUtils;
 import com.waw.hr.mutils.base.BaseBean;
@@ -25,6 +27,7 @@ public class AboutActivity extends BaseActivity<ActivityAboutBinding> {
 
     @Override
     public void initUI() {
+        setBackVisibility(View.VISIBLE);
         binding.includeToolbar.tvTitle.setText("关于我们");
     }
 
