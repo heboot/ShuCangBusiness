@@ -6,14 +6,9 @@ import com.example.http.HttpClient;
 import com.waw.hr.mutils.DialogUtils;
 import com.waw.hr.mutils.base.BaseBean;
 import com.zh.business.shucang.R;
-import com.zh.business.shucang.activity.user.InfoActivity;
 import com.zh.business.shucang.base.BaseActivity;
 import com.zh.business.shucang.databinding.ActivityAboutBinding;
 import com.zh.business.shucang.http.HttpObserver;
-import com.zh.business.shucang.service.UserService;
-import com.zh.business.shucang.utils.ImageUtils;
-
-import java.util.Map;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

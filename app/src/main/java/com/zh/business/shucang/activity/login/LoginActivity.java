@@ -30,7 +30,7 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
 
     @Override
     public void initUI() {
-        setBackVisibility(View.VISIBLE);
+        setBackVisibility(View.GONE);
         binding.includeToolbar.tvTitle.setText("登录");
     }
 
@@ -101,4 +101,8 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 }

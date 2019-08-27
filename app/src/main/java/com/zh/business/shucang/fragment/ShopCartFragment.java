@@ -67,8 +67,13 @@ public class ShopCartFragment extends BaseFragment<ActivityShopCartBinding> {
     }
 
     @Override
-    public void initData() {
+    public void onSupportInvisible() {
+        super.onSupportInvisible();
         getShopcartData();
+    }
+
+    @Override
+    public void initData() {
     }
 
     @Override
@@ -161,6 +166,9 @@ public class ShopCartFragment extends BaseFragment<ActivityShopCartBinding> {
 
 
     public void getShopcartData() {
+        if(!UserService.getInstance().isLogin()){
+            return;
+        }
         HttpClient.Builder.getServer().cartList(UserService.getInstance().getToken()).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<List<GoodsBean>>() {
             @Override
             public void onSuccess(BaseBean<List<GoodsBean>> baseBean) {

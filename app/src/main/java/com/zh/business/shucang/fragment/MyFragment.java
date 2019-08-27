@@ -6,11 +6,9 @@ import android.os.Bundle;
 import com.example.http.HttpClient;
 import com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIPullRefreshLayout;
 import com.waw.hr.mutils.DialogUtils;
-import com.waw.hr.mutils.MKey;
 import com.waw.hr.mutils.base.BaseBean;
 import com.zh.business.shucang.R;
 import com.zh.business.shucang.activity.order.MyOrderActivity;
-import com.zh.business.shucang.activity.user.AddressListActivity;
 import com.zh.business.shucang.activity.user.CommentActivity;
 import com.zh.business.shucang.activity.user.FavActivity;
 import com.zh.business.shucang.activity.user.InfoActivity;
@@ -22,7 +20,6 @@ import com.zh.business.shucang.http.HttpObserver;
 import com.zh.business.shucang.service.UserService;
 import com.zh.business.shucang.utils.ImageUtils;
 import com.zh.business.shucang.utils.IntentUtils;
-import com.zh.business.shucang.utils.SignUtils;
 
 import java.util.Map;
 
@@ -71,7 +68,6 @@ public class MyFragment extends BaseFragment<FragmentMyBinding> {
 
     @Override
     public void initData() {
-        member();
     }
 
     @Override
@@ -80,7 +76,11 @@ public class MyFragment extends BaseFragment<FragmentMyBinding> {
         member();
     }
 
+
     public void member() {
+        if(!UserService.getInstance().isLogin()){
+            return;
+        }
         HttpClient.Builder.getServer().member(UserService.getInstance().getToken()).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe(new HttpObserver<Map>() {
             @Override
             public void onSuccess(BaseBean<Map> baseBean) {

@@ -8,7 +8,6 @@ import com.waw.hr.mutils.MKey;
 import com.waw.hr.mutils.base.BaseBean;
 import com.waw.hr.mutils.bean.AddressBean;
 import com.waw.hr.mutils.bean.GoodsDetailBean;
-import com.waw.hr.mutils.bean.ImmediatelyBean;
 import com.waw.hr.mutils.bean.OrderSubBean;
 import com.waw.hr.mutils.event.UserEvent;
 import com.zh.business.shucang.R;

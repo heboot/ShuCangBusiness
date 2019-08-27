@@ -3,7 +3,6 @@ package com.zh.business.shucang.activity.order;
 import android.view.View;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.zh.business.shucang.R;
 import com.zh.business.shucang.base.BaseActivity;
@@ -12,7 +11,6 @@ import com.zh.business.shucang.databinding.ActivityMyOrdersBinding;
 import com.zh.business.shucang.fragment.OrderFragment;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MyOrderActivity extends BaseActivity<ActivityMyOrdersBinding> {
 

@@ -4,7 +4,7 @@ import com.waw.hr.mutils.bean.AddressBean;
 
 public class UserEvent {
 
-    public static class ChooseAddressEvent{
+    public static class ChooseAddressEvent {
 
         private AddressBean addressBean;
 
@@ -14,6 +14,19 @@ public class UserEvent {
 
         public AddressBean getAddressBean() {
             return addressBean;
+        }
+    }
+
+    public static class WxPayEvent {
+
+        private int errorCode;
+
+        public WxPayEvent(int errorCode) {
+            this.errorCode = errorCode;
+        }
+
+        public int getErrorCode() {
+            return errorCode;
         }
     }
 

@@ -1,12 +1,9 @@
 package com.zh.business.shucang.activity.login;
 
-import android.Manifest;
 import android.content.DialogInterface;
-import android.os.Build;
 import android.text.InputType;
 import android.view.View;
 
-import com.alibaba.fastjson.JSON;
 import com.example.http.HttpClient;
 import com.waw.hr.mutils.DialogUtils;
 import com.waw.hr.mutils.MKey;
@@ -20,8 +17,6 @@ import com.zh.business.shucang.databinding.ActivityRegisterBinding;
 import com.zh.business.shucang.http.HttpObserver;
 import com.zh.business.shucang.service.UserService;
 import com.zh.business.shucang.utils.IntentUtils;
-
-import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;

@@ -169,6 +169,31 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
                 if (o instanceof UserEvent.ChooseAddressEvent) {
                     addressBean = ((UserEvent.ChooseAddressEvent) o).getAddressBean();
                     showAddr();
+                } else if (o instanceof UserEvent.WxPayEvent) {
+                    switch (((UserEvent.WxPayEvent) o).getErrorCode()) {
+                        case 0:
+                            tipDialog = DialogUtils.getSuclDialog(OrderDetailActivity.this,"支付成功",true);
+                            tipDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                @Override
+                                public void onDismiss(DialogInterface dialogInterface) {
+                                    finish();
+                                }
+                            });
+                            tipDialog.show();
+                            break;
+                        case -1:
+                            tipDialog = DialogUtils.getFailDialog(OrderDetailActivity.this,"支付失败",true);
+                            tipDialog.show();
+                            break;
+                        case -2:
+                            tipDialog = DialogUtils.getFailDialog(OrderDetailActivity.this,"取消支付",true);
+                            tipDialog.show();
+                            break;
+                        default:
+                            tipDialog = DialogUtils.getFailDialog(OrderDetailActivity.this,"支付失败",true);
+                            tipDialog.show();
+                            break;
+                    }
                 }
             }
 
@@ -240,6 +265,10 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
         PayUtils.getInstance().aliPay(orderInfo, aliPayObserver);
     }
 
+    private void wxPay(Map map) {
+        PayUtils.getInstance().wxPay(map);
+    }
+
     private void buyByOrder() {
 
         params.put(MKey.ID, orderInfoBean.getId());
@@ -254,6 +283,7 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
                     aliPay((String) baseBean.getData());
 
                 } else {
+                    wxPay((Map) baseBean.getData());
 //                    //1.创建微信支付请求
 //                    WechatPayReq wechatPayReq = new WechatPayReq.Builder()
 //                            .with(OrderDetailActivity.this) //activity实例
@@ -294,19 +324,7 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
                 if (binding.includePaytype.getPayType() == 1) {
                     aliPay((String) baseBean.getData());
                 } else {
-//                    //1.创建微信支付请求
-//                    WechatPayReq wechatPayReq = new WechatPayReq.Builder()
-//                            .with(OrderDetailActivity.this) //activity实例
-//                            .setAppId((String) ((Map) baseBean.getData()).get("appId")) //微信支付AppID
-////                            .setPartnerId((String) ((Map)baseBean.getData()).get("nonceStr"))//微信支付商户号
-//                            .setPrepayId((String) ((Map) baseBean.getData()).get("package"))//预支付码
-////								.setPackageValue(wechatPayReq.get)//"Sign=WXPay"
-//                            .setNonceStr((String) ((Map) baseBean.getData()).get("nonceStr"))
-//                            .setTimeStamp((String) ((Map) baseBean.getData()).get("timeStamp"))//时间戳
-//                            .setSign((String) ((Map) baseBean.getData()).get("paySign"))//签名
-//                            .create();
-//                    //2.发送微信支付请求
-//                    PayAPI.getInstance().sendPayRequest(wechatPayReq);
+                    wxPay((Map) baseBean.getData());
                 }
             }
 
@@ -334,19 +352,7 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
                 if (binding.includePaytype.getPayType() == 1) {
                     aliPay((String) baseBean.getData());
                 } else {
-//                    //1.创建微信支付请求
-//                    WechatPayReq wechatPayReq = new WechatPayReq.Builder()
-//                            .with(OrderDetailActivity.this) //activity实例
-//                            .setAppId((String) ((Map) baseBean.getData()).get("appId")) //微信支付AppID
-////                            .setPartnerId((String) ((Map)baseBean.getData()).get("nonceStr"))//微信支付商户号
-//                            .setPrepayId((String) ((Map) baseBean.getData()).get("package"))//预支付码
-////								.setPackageValue(wechatPayReq.get)//"Sign=WXPay"
-//                            .setNonceStr((String) ((Map) baseBean.getData()).get("nonceStr"))
-//                            .setTimeStamp((String) ((Map) baseBean.getData()).get("timeStamp"))//时间戳
-//                            .setSign((String) ((Map) baseBean.getData()).get("paySign"))//签名
-//                            .create();
-//                    //2.发送微信支付请求
-//                    PayAPI.getInstance().sendPayRequest(wechatPayReq);
+                    wxPay((Map) baseBean.getData());
                 }
             }
 

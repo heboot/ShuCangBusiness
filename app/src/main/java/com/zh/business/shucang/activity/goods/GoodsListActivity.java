@@ -1,13 +1,10 @@
 package com.zh.business.shucang.activity.goods;
 
-import android.print.PageRange;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.http.HttpClient;
@@ -18,16 +15,11 @@ import com.waw.hr.mutils.base.BaseBean;
 import com.waw.hr.mutils.bean.GoodsBean;
 import com.zh.business.shucang.R;
 import com.zh.business.shucang.adapter.index.IndexGoodsAdapter;
-import com.zh.business.shucang.adapter.shopcart.ShopCartAdapter;
 import com.zh.business.shucang.base.BaseActivity;
 import com.zh.business.shucang.databinding.ActivityClassifyMoreResultBinding;
-import com.zh.business.shucang.fragment.ShopCartFragment;
 import com.zh.business.shucang.http.HttpObserver;
-import com.zh.business.shucang.service.UserService;
 import com.zh.business.shucang.utils.SignUtils;
 
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
