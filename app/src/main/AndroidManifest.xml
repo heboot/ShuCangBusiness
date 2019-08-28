@@ -58,6 +58,13 @@
 
         <activity android:name=".activity.common.AboutActivity"></activity>
 
+
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"/>
+
+
         <!--<meta-data android:name="com.amap.api.v2.apikey" android:value="dd36d8ae3348de1ff8f34e1697c12136">-->
         <!--</meta-data>-->
 

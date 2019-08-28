@@ -7,8 +7,13 @@ import com.alipay.sdk.app.PayTask;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.waw.hr.mutils.LogUtil;
 import com.zh.business.shucang.MAPP;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -22,7 +27,6 @@ public class PayUtils {
 
     private static PayUtils payUtils;
 
-    private static IWXAPI msgApi = null;
 
     public static PayUtils getInstance() {
         if (payUtils == null) {
@@ -32,24 +36,56 @@ public class PayUtils {
     }
 
     public void wxPay(Map<String, String> map) {
-        msgApi = WXAPIFactory.createWXAPI(MAPP.mapp, null);
-        // 将该app注册到微信
-
-        msgApi.registerApp("wx37c1c72fd81bd8bf");
-
         PayReq request = new PayReq();
-        request.appId = (String) map.get("appId");
-//        request.partnerId = (String) map.get("appId");
-//        request.prepayId = (String) map.get("appId");
-        request.partnerId = "1519790121";//商户ID
-        request.prepayId = (String) map.get("package").substring(10,  map.get("package").length());
-        request.packageValue = (String) map.get("package");
-        request.nonceStr = (String) map.get("nonceStr");
-        request.timeStamp = (String) map.get("timeStamp");
-        request.sign = (String) map.get("paySign");
-        msgApi.sendReq(request);
+        request.appId = map.get("appId");
+        request.partnerId = "1541100021";//商户ID
+        request.prepayId = (String) map.get("package").substring(10);
+        LogUtil.e("支付ID", request.prepayId);
+        request.packageValue = "Sign=WXPay";
+        request.nonceStr = map.get("nonceStr");
+        request.timeStamp = map.get("timeStamp");
+//        request.sign = map.get("paySign");
+        //开始将6个字段进行数据封装
+        List<WXModel> list = new LinkedList<>();
+        list.add(new WXModel("appid", map.get("appId")));
+        list.add(new WXModel("noncestr", map.get("nonceStr")));
+        list.add(new WXModel("package", "Sign=WXPay"));
+        list.add(new WXModel("partnerid", "1541100021"));
+        list.add(new WXModel("prepayid", map.get("package").substring(10)));
+        list.add(new WXModel("timestamp", map.get("timeStamp")));
+
+        LogUtil.e("自己测试", genAppSign(list));
+
+        request.sign = "WXPay";
+//...发起请求即可
 
 
+        MAPP.getWxapi().sendReq(request);
+
+
+    }
+
+
+    /**
+     * 生成签名
+     */
+    private String genAppSign(List<WXModel> list) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            sb.append(list.get(i).getKey());
+            sb.append('=');
+            sb.append(list.get(i).getValue());
+            sb.append('&');
+        }
+        sb.append("key=");
+        sb.append("wx37c1c72fd81bd8bf");
+        String appSign = null;
+        try {
+            appSign = String.valueOf(MessageDigest.getInstance("MD5").digest(sb.toString().getBytes())).toUpperCase();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return appSign;
     }
 
 

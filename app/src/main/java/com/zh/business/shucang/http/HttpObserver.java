@@ -7,6 +7,7 @@ import com.waw.hr.mutils.MCode;
 import com.waw.hr.mutils.NetWorkUtils;
 import com.waw.hr.mutils.base.BaseBean;
 import com.zh.business.shucang.MAPP;
+import com.zh.business.shucang.activity.login.LoginActivity;
 import com.zh.business.shucang.service.UserService;
 import com.zh.business.shucang.utils.IntentUtils;
 
@@ -41,7 +42,7 @@ public abstract class HttpObserver<T> implements Observer<BaseBean<T>> {
         LogUtil.e(TAG, JSON.toJSONString(baseBean));
         if (baseBean.getCode() != MCode.HTTP_CODE.SUCCESS || baseBean == null) {
             if (baseBean.getCode() == MCode.HTTP_CODE.TOKEN_ERROR) {
-                UserService.getInstance().isLogin();
+                IntentUtils.doIntent(LoginActivity.class);
             }
             this.disposable.dispose();
             try {

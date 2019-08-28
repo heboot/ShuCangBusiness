@@ -13,7 +13,6 @@
             android:layout_width="@dimen/x80"
             android:layout_height="@dimen/y80"
             android:layout_marginLeft="@dimen/x10"
-            android:background="@mipmap/test_goods_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
